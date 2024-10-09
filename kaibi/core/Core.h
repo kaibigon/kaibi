@@ -1,8 +1,5 @@
 #pragma once
 
-// #define KB_PLATFORM_WINDOWS
-// #define KB_BUILD_DLL
-
 #ifdef KB_PLATFORM_WINDOWS
 	#ifdef KB_BUILD_DLL
 		#define	KAIBI_API __declspec(dllexport)
@@ -10,7 +7,11 @@
 		#define KAIBI_API __declspec(dllimport)
 	#endif
 #else
-	#error only support Windows! 
+ 	#ifdef KB_BUILD_DLL
+        #define KAIBI_API __attribute__((visibility("default")))
+    #else
+        #define KAIBI_API
+    #endif
 #endif
 
 #ifdef KB_ENABLE_ASSERTS

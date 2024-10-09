@@ -2,10 +2,6 @@
 #include <spdlog/spdlog.h>
 #include "Logger.h"
 
-#ifdef KB_PLATFORM_WINDOWS
-
-extern KAIBI::Application* KAIBI::CreateApplication();
-
 int main(int argc, char* argv[]) 
 {
     KAIBI::Logger::Init();
@@ -17,4 +13,10 @@ int main(int argc, char* argv[])
     return 0;
 }
 
-#endif
+// #ifdef KB_PLATFORM_WINDOWS
+
+extern KAIBI::Application* KAIBI::CreateApplication();
+
+
+
+// #endif

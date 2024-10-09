@@ -13,9 +13,6 @@ namespace KAIBI
 
     void Application::Run()
     {
-        while (true)
-        {
-            // spdlog::info("Welcome to Kaibi Engine!");
-        }
+        spdlog::info("Running Application");
     }
 }
