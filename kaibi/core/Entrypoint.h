@@ -1,4 +1,6 @@
 #include <iostream>
+#include <spdlog/spdlog.h>
+#include "Logger.h"
 
 #ifdef KB_PLATFORM_WINDOWS
 
@@ -6,7 +8,9 @@ extern KAIBI::Application* KAIBI::CreateApplication();
 
 int main(int argc, char* argv[]) 
 {
-    std::cout << "Welcome to Kaibi Engine!" << std::endl;
+    KAIBI::Logger::Init();
+    KAIBI::Logger::GetCoreLogger()->info("Welcome to kaibigon's kaibi Engine!");
+
     auto app = KAIBI::CreateApplication();
     app->Run();
     delete app;

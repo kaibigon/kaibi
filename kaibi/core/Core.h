@@ -10,7 +10,7 @@
 		#define KAIBI_API __declspec(dllimport)
 	#endif
 #else
-	#error Hazel only support Windows! 
+	#error only support Windows! 
 #endif
 
 #ifdef KB_ENABLE_ASSERTS
