@@ -44,13 +44,15 @@ namespace KAIBI
         return stream.str();
 	}
 
-	void Logger::Log(LogLevel level, const std::string& message, ...)
+	void Logger::Log(LogLevel level, std::string message, ...)
 	{
 		std::string logMessage = "[" + GetTime() + "]" + " [" + GetLogLevelString(level) + "] " + message + "\n";
+
 		va_list args;
 		va_start(args, message);
 		vprintf(logMessage.c_str(), args);
 		va_end(args);
+
 	}
 
     // std::shared_ptr<spdlog::logger> Logger::s_CoreLogger;

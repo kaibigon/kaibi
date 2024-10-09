@@ -27,7 +27,9 @@ namespace KAIBI
     public:
         static void Init();
 
-        void Log(LogLevel level, const std::string& message, ...);
+        // NOTE: For some reasons, the variadic arguments are not working if we pass message as reference (and only broken on Windows, no issues on Mac)
+        // TODO: Find anohter work around here
+        void Log(LogLevel level, std::string message, ...);
 
 		static std::shared_ptr<Logger> GetInstance() { return s_Instance; }
 

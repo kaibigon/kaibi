@@ -5,7 +5,7 @@ add_requires("spdlog")
 set_languages("c++20")
 
 -- uncomment this line for MacOS
--- add_defines("KB_PLATFORM_WINDOWS")
+add_defines("KB_PLATFORM_WINDOWS")
 
 function traverse_directory(path)
     add_headerfiles(path .. "/**.h")
