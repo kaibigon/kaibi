@@ -2,15 +2,15 @@
 
 #ifdef KB_PLATFORM_WINDOWS
 	#ifdef KB_BUILD_DLL
-		#define	KAIBI_API __declspec(dllexport)
+		#define	KAPI __declspec(dllexport)
 	#else
-		#define KAIBI_API __declspec(dllimport)
+		#define KAPI __declspec(dllimport)
 	#endif
 #else
  	#ifdef KB_BUILD_DLL
-        #define KAIBI_API __attribute__((visibility("default")))
+        #define KAPI __attribute__((visibility("default")))
     #else
-        #define KAIBI_API
+        #define KAPI
     #endif
 #endif
 

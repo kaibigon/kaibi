@@ -1,9 +1,9 @@
 #pragma once
-#include "Core.h"
+#include "core/core.h"
 
 namespace KAIBI 
 {
-	class KAIBI_API Application
+	class KAPI Application
 	{
 	public:
 		Application();

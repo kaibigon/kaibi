@@ -1,7 +1,7 @@
-#include "Application.h"
+#include "application.h"
 #include <spdlog/spdlog.h>
 
-namespace KAIBI
+namespace KAIBI	
 {
 	Application::Application()
 	{
@@ -13,6 +13,6 @@ namespace KAIBI
 
     void Application::Run()
     {
-        spdlog::info("Running Application");
+        // spdlog::info("Testing");
     }
 }
