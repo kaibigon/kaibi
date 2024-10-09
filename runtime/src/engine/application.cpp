@@ -13,6 +13,5 @@ namespace KAIBI
 
     void Application::Run()
     {
-        // spdlog::info("Testing");
     }
 }

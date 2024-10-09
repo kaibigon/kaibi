@@ -4,6 +4,16 @@
 namespace KAIBI 
 {
 
+	std::shared_ptr<Logger> Logger::s_Instance = nullptr;
+
+	void Logger::Init()
+	{
+		if (!s_Instance)
+		{
+			s_Instance = std::make_shared<Logger>();
+		}
+	}
+
     std::string Logger::GetLogLevelString(LogLevel level) const
 	{
 		switch (level)
@@ -18,7 +28,6 @@ namespace KAIBI
 		return "INFO";
 	}
 	
-
 	std::string Logger::GetTime() const
 	{
 		auto now = std::chrono::system_clock::now();
@@ -31,11 +40,18 @@ namespace KAIBI
 #endif
         std::ostringstream stream;
         // stream << std::put_time(&now_tm, "%Y-%m-%d %H:%M:%S");
-        stream << std::put_time(&now_tm, "[%H:%M:%S]");
+        stream << std::put_time(&now_tm, "%H:%M:%S");
         return stream.str();
 	}
 
-
+	void Logger::Log(LogLevel level, const std::string& message, ...)
+	{
+		std::string logMessage = "[" + GetTime() + "]" + " [" + GetLogLevelString(level) + "] " + message + "\n";
+		va_list args;
+		va_start(args, message);
+		vprintf(logMessage.c_str(), args);
+		va_end(args);
+	}
 
     // std::shared_ptr<spdlog::logger> Logger::s_CoreLogger;
     // std::shared_ptr<spdlog::logger> Logger::s_ClientLogger;

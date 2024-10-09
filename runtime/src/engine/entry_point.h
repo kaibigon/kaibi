@@ -4,12 +4,10 @@
 
 int main(int argc, char* argv[]) 
 {
-    KAIBI::Logger* logger = new KAIBI::Logger();
-    std::cout << logger->GetTime() << std::endl;
-    delete logger;
-    // KAIBI::Logger::Init();
-    // KAIBI::Logger::GetCoreLogger()->info("Welcome to kaibigon's kaibi Engine!");
-    std::cout << "Welcome to kaibigon's ngine!" << std::endl;
+    KAIBI::Logger::Init();
+    LOG_INFO("Welcome to kaibigon's kaibi Engine!");
+    LOG_WARN("This is a warning message!");
+    LOG_ERROR("This is a error message!");
 
     auto app = KAIBI::CreateApplication();
     app->Run();
