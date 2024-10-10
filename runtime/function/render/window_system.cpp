@@ -10,6 +10,7 @@
 // #include "core/event/mouse_event.h"
 // #include "core/event/window_event.h"
 #include <GLFW/glfw3.h>
+#include "glad/glad.h"
 
 namespace KAIBI
 {
@@ -20,6 +21,7 @@ namespace KAIBI
 
     WindowSystem::~WindowSystem()
     {
+        glfwDestroyWindow(m_window);
     }
 
     void WindowSystem::initialize(const WindowCreateInfo& info)
@@ -40,8 +42,25 @@ namespace KAIBI
         }
         glfwMakeContextCurrent(m_window);
         // glfwSwapInterval(1); // enable vsync
+        int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+        if (!status)
+        {
+            LOG_ERROR("Failed to initialize GLAD");
+            return;
+        }
 
         // Imgui
+        IMGUI_CHECKVERSION();
+        ImGui::CreateContext();
+        ImGuiIO& io = ImGui::GetIO(); (void)io;
+        io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;       // Enable Keyboard Controls
+        io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;        // Enable Gamepad Controls
+
+        // Setup Dear ImGui style
+        ImGui::StyleColorsDark();
+
+        // Setup Platform/Renderer bindings
+        ImGui_ImplOpenGL3_Init("#version 410");
 
         // set up event call back here 
         glfwSetWindowUserPointer(m_window, this);
@@ -57,11 +76,15 @@ namespace KAIBI
         glfwSetWindowCloseCallback(m_window, windowCloseCallback);
 
         glfwSetInputMode(m_window, GLFW_RAW_MOUSE_MOTION, GLFW_FALSE);
+
     }
 
     void WindowSystem::pollEvents() const
     {
         glfwPollEvents();
+
+        // move to other place
+        glfwSwapBuffers(m_window);
     }
 
     bool WindowSystem::shouldClose() const
