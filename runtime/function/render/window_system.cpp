@@ -1,10 +1,10 @@
 #include "pch.h"
 #include "function/render/window_system.h"
 
-#include "core/event/event.h"
-#include "core/event/key_event.h"
-#include "core/event/mouse_event.h"
-#include "core/event/window_event.h"
+// #include "core/event/event.h"
+// #include "core/event/key_event.h"
+// #include "core/event/mouse_event.h"
+// #include "core/event/window_event.h"
 #include <GLFW/glfw3.h>
 
 namespace KAIBI

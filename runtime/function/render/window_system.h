@@ -2,7 +2,7 @@
 
 #include "pch.h"
 #include "core/base/core.h"
-#include "core/event/event.h"
+// #include "core/event/event.h"
 #include "core/log/log_system.h"
 #include <GLFW/glfw3.h>
 
@@ -19,7 +19,7 @@ namespace KAIBI
     class KAPI WindowSystem
     {
     public:
-        typedef std::function<void(Event&)> EventCallbackFn;
+        // typedef std::function<void(Event&)> EventCallbackFn;
 
         WindowSystem();
         ~WindowSystem();
