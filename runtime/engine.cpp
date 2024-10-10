@@ -34,10 +34,11 @@ namespace KAIBI
 
 	void Engine::shutdownEngine()
 	{
+		LOG_INFO("SHUT DOWN ENGINE!");
 		g_runtime_global_context.shutdownSystems();
 	}
 
-	void Engine::tickOneFrame()
+	bool Engine::tickOneFrame()
 	{
 		// logic tick
 		
@@ -55,6 +56,9 @@ namespace KAIBI
 		// imgui
 		g_runtime_global_context.m_imgui_system->newFrame();
 		g_runtime_global_context.m_imgui_system->render();
+
+        const bool should_window_close = g_runtime_global_context.m_window_system->shouldClose();
+        return !should_window_close;
 	}
 
     void Engine::run()
@@ -65,5 +69,7 @@ namespace KAIBI
 		{
 			tickOneFrame();
 		}
+
+		LOG_INFO("Engine END!");
     }
 }

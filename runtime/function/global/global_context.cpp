@@ -22,8 +22,11 @@ namespace KAIBI
 
     void RuntimeGlobalContext::shutdownSystems()
     {
-        m_log_system.reset();
+        LOG_INFO("Shutdown Systems!");
         m_window_system.reset();
         m_imgui_system.reset();
+        LOG_INFO("Shutdown LOG?!");
+        m_log_system.reset();
+        LOG_INFO("Shutdown LOG?");
     }
 }

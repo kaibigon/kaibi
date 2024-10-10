@@ -9,7 +9,8 @@ namespace KAIBI
 	}
 
 	LogSystem::~LogSystem()
-	{
+	{	
+        spdlog::drop_all();
 	}
 
     std::string LogSystem::GetLogLevelString(LogLevel level) const

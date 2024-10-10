@@ -14,7 +14,7 @@ namespace KAIBI
 		void run(); // core game loop
 
 		// Add delta time
-		void tickOneFrame();
+		bool tickOneFrame();
 
 	};
 
