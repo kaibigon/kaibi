@@ -33,6 +33,12 @@ namespace KAIBI
         {
             return;
         }
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+        glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+#ifndef KB_PLATFORM_WINDOWS
+        glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+#endif
 
         m_window = glfwCreateWindow(m_width, m_height, info.title.c_str(), nullptr, nullptr);
         if (!m_window)
