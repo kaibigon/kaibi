@@ -22,26 +22,16 @@ namespace KAIBI
 
 	void Engine::startEngine()
 	{
+		LOG_INFO("------START ENGINE");
 		g_runtime_global_context.startSystems();
-		g_runtime_global_context.m_log_system->Log(LogLevel::Info, "Engine Start Systems!");
-
-		// TODO: callback test, remove me
-		g_runtime_global_context.m_window_system->registerOnKeyFunc([](int key, int scancode, int action, int mods)
-		{
-			// LOG_INFO("Key: %c, Scancode: %d, Action: %d, Mods: %d", (char)key, scancode, action, mods);
-		});
-
-		g_runtime_global_context.m_window_system->registerOnMouseButtonFunc([](int button, int action, int mods)
-		{
-			// LOG_INFO("Button: %d, Action: %d, Mods: %d", button, action, mods);
-		});
+		LOG_INFO("---START SUBSYSTEMS");
 	}
 
 	void Engine::shutdownEngine()
 	{
-		LOG_INFO("START SHUTING DOWN SYSTEMS!");
+		LOG_INFO("------SHUTDOWN SUBSYSTEMS");
 		g_runtime_global_context.shutdownSystems();
-		LOG_INFO("FINISH SHUTING DOWN SYSTEMS!");
+		LOG_INFO("---SHUTDOWN SUBSYSTEMS");
 	}
 
 	bool Engine::tickOneFrame()
@@ -53,7 +43,6 @@ namespace KAIBI
 		// render tick
 
 		// window poll event
-        //const bool should_window_close = g_runtime_global_context.m_window_system->shouldClose();
 
 		glClearColor(1.0f, 0.5f, 1.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
@@ -76,7 +65,5 @@ namespace KAIBI
 		{
 			tickOneFrame();
 		}
-
-		LOG_INFO("Engine END!");
     }
 }

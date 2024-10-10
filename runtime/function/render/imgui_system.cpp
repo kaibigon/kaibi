@@ -141,10 +141,6 @@ namespace KAIBI
             io.WantCaptureMouse = entered;
         });
 
-
-        // Setup Platform/Renderer bindings // test
-        // ImGui_ImplGlfw_InitForOpenGL(window, true);
-
         // binding event ... probably need to setup a proper way to propogate events
         
     }
@@ -154,7 +150,6 @@ namespace KAIBI
         ImGui_ImplOpenGL3_Shutdown();
         ImGui_ImplGlfw_Shutdown();
         ImGui::DestroyContext();
-        LOG_INFO("Shutdown ImguiSystem");
     }
 
     void ImguiSystem::newFrame()
