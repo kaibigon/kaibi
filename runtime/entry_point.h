@@ -13,7 +13,9 @@ int main(int argc, char* argv[])
 
     engine->shutdownEngine();
 
+    std::cout << "start delete engine!" << std::endl;
     delete engine;
+    std::cout << "finish delete engine!" << std::endl;
 
     return 0;
 }

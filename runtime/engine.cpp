@@ -39,8 +39,9 @@ namespace KAIBI
 
 	void Engine::shutdownEngine()
 	{
-		LOG_INFO("SHUT DOWN ENGINE!");
+		LOG_INFO("START SHUTING DOWN SYSTEMS!");
 		g_runtime_global_context.shutdownSystems();
+		LOG_INFO("FINISH SHUTING DOWN SYSTEMS!");
 	}
 
 	bool Engine::tickOneFrame()

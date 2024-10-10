@@ -50,8 +50,16 @@ namespace KAIBI
         std::shared_ptr<WindowSystem> windowSystem = g_runtime_global_context.m_window_system;
         windowSystem->registerOnKeyFunc([window](int key, int scancode, int action, int mods)
         {
-            LOG_INFO("Key: %c, Scancode: %d, Action: %d, Mods: %d", (char)key, scancode, action, mods);
-            // ImGui_ImplGlfw_KeyCallback(window, key, scancode, action, mods);
+            ImGuiIO& io = ImGui::GetIO();
+            switch(action)
+            {
+                case GLFW_PRESS:
+                    io.KeysDown[key] = true;
+                    break;
+                case GLFW_RELEASE:
+                    io.KeysDown[key] = false;
+                    break;
+            }
         });
 
         windowSystem->registerOnMouseButtonFunc([window](int button, int action, int mods)
@@ -76,6 +84,63 @@ namespace KAIBI
             io.MousePos = ImVec2(x, y);
         });
 
+        windowSystem->registerOnScrollFunc([window](double x, double y)
+        {
+            LOG_INFO("Imgui Scroll: %f, %f", x, y);
+            ImGuiIO& io = ImGui::GetIO();
+            io.MouseWheelH += x;
+            io.MouseWheel += y;
+        });
+
+        windowSystem->registerOnCharFunc([window](unsigned int codepoint)
+        {
+            LOG_INFO("Imgui Char: %c", (char)codepoint);
+            ImGuiIO& io = ImGui::GetIO();
+            io.AddInputCharacter(codepoint);
+        });
+
+        windowSystem->registerOnWindowSizeFunc([window](int width, int height)
+        {
+            LOG_INFO("Imgui Window Size: %d, %d", width, height);
+            ImGuiIO& io = ImGui::GetIO();
+            io.DisplaySize = ImVec2(width, height);
+            io.DisplayFramebufferScale = ImVec2(1.0f, 1.0f);
+        });
+
+        windowSystem->registerOnWindowCloseFunc([window]()
+        {
+            LOG_INFO("Imgui Window Close");
+            ImGui_ImplOpenGL3_Shutdown();
+            ImGui_ImplGlfw_Shutdown();
+            ImGui::DestroyContext();
+        });
+
+        windowSystem->registerOnResetFunc([window]()
+        {
+            LOG_INFO("Imgui Reset");
+            ImGui_ImplOpenGL3_Shutdown();
+            ImGui_ImplGlfw_Shutdown();
+            ImGui::DestroyContext();
+        });
+
+        windowSystem->registerOnCharModsFunc([window](int key, unsigned int mods)
+        {
+            LOG_INFO("Imgui Char Mods: %d, %d", key, mods);
+            ImGuiIO& io = ImGui::GetIO();
+            io.KeyCtrl = (mods & GLFW_MOD_CONTROL) != 0;
+            io.KeyShift = (mods & GLFW_MOD_SHIFT) != 0;
+            io.KeyAlt = (mods & GLFW_MOD_ALT) != 0;
+            io.KeySuper = (mods & GLFW_MOD_SUPER) != 0;
+        });
+
+        windowSystem->registerOnCursorEnterFunc([window](int entered)
+        {
+            LOG_INFO("Imgui Cursor Enter: %d", entered);
+            ImGuiIO& io = ImGui::GetIO();
+            io.WantCaptureMouse = entered;
+        });
+
+
         // Setup Platform/Renderer bindings // test
         // ImGui_ImplGlfw_InitForOpenGL(window, true);
 
@@ -86,8 +151,9 @@ namespace KAIBI
     void ImguiSystem::shutdown()
     {
         ImGui_ImplOpenGL3_Shutdown();
-        ImGui_ImplGlfw_Shutdown();
+        // ImGui_ImplGlfw_Shutdown();
         ImGui::DestroyContext();
+        LOG_INFO("Shutdown ImguiSystem");
     }
 
     void ImguiSystem::newFrame()

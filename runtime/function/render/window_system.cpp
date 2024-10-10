@@ -46,7 +46,6 @@ namespace KAIBI
             return;
         }
 
-
         // set up event call back here 
         glfwSetWindowUserPointer(m_window, this);
         glfwSetKeyCallback(m_window, keyCallback);
