@@ -30,6 +30,11 @@ namespace KAIBI
 		{
 			LOG_INFO("Key: %c, Scancode: %d, Action: %d, Mods: %d", (char)key, scancode, action, mods);
 		});
+
+		g_runtime_global_context.m_window_system->registerOnMouseButtonFunc([](int button, int action, int mods)
+		{
+			LOG_INFO("Button: %d, Action: %d, Mods: %d", button, action, mods);
+		});
 	}
 
 	void Engine::shutdownEngine()
