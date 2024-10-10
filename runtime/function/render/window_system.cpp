@@ -91,7 +91,7 @@ namespace KAIBI
             app->onKey(key, scancode, action, mods);
         }
 
-        LOG_INFO("Key: %c, Scancode: %d, Action: %d, Mods: %d", (char)key, scancode, action, mods);
+        // LOG_INFO("Key: %c, Scancode: %d, Action: %d, Mods: %d", (char)key, scancode, action, mods);
     }
 
     void WindowSystem::charCallback(GLFWwindow* window, unsigned int codepoint)

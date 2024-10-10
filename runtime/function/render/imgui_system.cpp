@@ -66,12 +66,12 @@ namespace KAIBI
 
         windowSystem->registerOnMouseButtonFunc([window](int button, int action, int mods)
         {
-            LOG_INFO("Imgui Mouse Button: %d, Action: %d, Mods: %d", button, action, mods);
             ImGuiIO& io = ImGui::GetIO();
             switch(action)
             {
                 case GLFW_PRESS:
                     io.MouseDown[button] = true;
+                    LOG_INFO("Imgui Mouse Button: %d, Action: %d, Mods: %d", button, action, mods);
                     break;
                 case GLFW_RELEASE:
                     io.MouseDown[button] = false;
@@ -81,14 +81,14 @@ namespace KAIBI
 
         windowSystem->registerOnCursorPosFunc([window](double x, double y)
         {
-            LOG_INFO("Imgui Cursor Pos: %f, %f", x, y);
+            // LOG_INFO("Imgui Cursor Pos: %f, %f", x, y);
             ImGuiIO& io = ImGui::GetIO();
             io.MousePos = ImVec2(x, y);
         });
 
         windowSystem->registerOnScrollFunc([window](double x, double y)
         {
-            LOG_INFO("Imgui Scroll: %f, %f", x, y);
+            // LOG_INFO("Imgui Scroll: %f, %f", x, y);
             ImGuiIO& io = ImGui::GetIO();
             io.MouseWheelH += x;
             io.MouseWheel += y;
@@ -96,14 +96,14 @@ namespace KAIBI
 
         windowSystem->registerOnCharFunc([window](unsigned int codepoint)
         {
-            LOG_INFO("Imgui Char: %c", (char)codepoint);
+            // LOG_INFO("Imgui Char: %c", (char)codepoint);
             ImGuiIO& io = ImGui::GetIO();
             io.AddInputCharacter(codepoint);
         });
 
         windowSystem->registerOnWindowSizeFunc([window](int width, int height)
         {
-            LOG_INFO("Imgui Window Size: %d, %d", width, height);
+            // LOG_INFO("Imgui Window Size: %d, %d", width, height);
             ImGuiIO& io = ImGui::GetIO();
             io.DisplaySize = ImVec2(width, height);
             io.DisplayFramebufferScale = ImVec2(1.0f, 1.0f);
@@ -111,7 +111,7 @@ namespace KAIBI
 
         windowSystem->registerOnWindowCloseFunc([window]()
         {
-            LOG_INFO("Imgui Window Close");
+            // LOG_INFO("Imgui Window Close");
             ImGui_ImplOpenGL3_Shutdown();
             ImGui_ImplGlfw_Shutdown();
             ImGui::DestroyContext();
@@ -119,7 +119,7 @@ namespace KAIBI
 
         windowSystem->registerOnResetFunc([window]()
         {
-            LOG_INFO("Imgui Reset");
+            // LOG_INFO("Imgui Reset");
             ImGui_ImplOpenGL3_Shutdown();
             ImGui_ImplGlfw_Shutdown();
             ImGui::DestroyContext();
@@ -127,7 +127,7 @@ namespace KAIBI
 
         windowSystem->registerOnCharModsFunc([window](int key, unsigned int mods)
         {
-            LOG_INFO("Imgui Char Mods: %d, %d", key, mods);
+            // LOG_INFO("Imgui Char Mods: %d, %d", key, mods);
             ImGuiIO& io = ImGui::GetIO();
             io.KeyCtrl = (mods & GLFW_MOD_CONTROL) != 0;
             io.KeyShift = (mods & GLFW_MOD_SHIFT) != 0;
@@ -137,7 +137,6 @@ namespace KAIBI
 
         windowSystem->registerOnCursorEnterFunc([window](int entered)
         {
-            LOG_INFO("Imgui Cursor Enter: %d", entered);
             ImGuiIO& io = ImGui::GetIO();
             io.WantCaptureMouse = entered;
         });
@@ -161,9 +160,11 @@ namespace KAIBI
     void ImguiSystem::newFrame()
     {
 		ImGuiIO& io = ImGui::GetIO();
-		io.DisplaySize = ImVec2(1280.0f, 720.0f);
+		io.DisplaySize = ImVec2(2000.0f, 720.0f);
 		io.DisplayFramebufferScale = ImVec2(1.0f, 1.0f);
         ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
+
         ImGui::NewFrame();
     }
 
