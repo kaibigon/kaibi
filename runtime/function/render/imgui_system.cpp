@@ -3,6 +3,7 @@
 #include "function/global/global_context.h"
 #include "function/render/window_system.h"
 
+
 namespace KAIBI
 {
     ImguiSystem::ImguiSystem()
@@ -45,6 +46,7 @@ namespace KAIBI
 		io.KeyMap[ImGuiKey_Y] = GLFW_KEY_Y;
 		io.KeyMap[ImGuiKey_Z] = GLFW_KEY_Z;
 
+        ImGui_ImplGlfw_InitForOpenGL(window, true);
         ImGui_ImplOpenGL3_Init("#version 410");
 
         std::shared_ptr<WindowSystem> windowSystem = g_runtime_global_context.m_window_system;
@@ -151,7 +153,7 @@ namespace KAIBI
     void ImguiSystem::shutdown()
     {
         ImGui_ImplOpenGL3_Shutdown();
-        // ImGui_ImplGlfw_Shutdown();
+        ImGui_ImplGlfw_Shutdown();
         ImGui::DestroyContext();
         LOG_INFO("Shutdown ImguiSystem");
     }
