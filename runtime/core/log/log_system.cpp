@@ -1,5 +1,6 @@
 // Logger.cpp
-#include "logger.h"
+#include "pch.h"
+#include "log_system.h"
 
 namespace KAIBI 
 {

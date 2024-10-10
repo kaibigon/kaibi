@@ -1,6 +1,6 @@
 set_project("nmsl")
 add_rules("mode.debug", "mode.release")
-add_requires("spdlog")
+add_requires("spdlog", "glfw")
 
 set_languages("c++20")
 
@@ -24,7 +24,10 @@ target("KAIBI")
     -- add_headerfiles("kaibi/**.h")
     add_includedirs("runtime/")
 
-    add_packages("spdlog", {public = true})
+    set_pcxxheader("runtime/pch.h")
+
+
+    add_packages("spdlog", "glfw", {public = true})
     -- set_pcxxheader("kaibi/src/kaibi.h")
 
 target("SANDBOX")

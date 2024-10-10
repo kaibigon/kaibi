@@ -1,5 +1,6 @@
 #include "engine.h"
-#include "core/log/logger.h"
+#include "pch.h"
+#include "core/log/log_system.h"
 #include "function/global/global_context.h"
 
 namespace KAIBI	
@@ -15,6 +16,7 @@ namespace KAIBI
 	void Engine::startEngine()
 	{
 		g_runtime_global_context.startSystems();
+		g_runtime_global_context.m_log_system->Log(LogLevel::Info, "Engine Start Systems!");
 	}
 
 	void Engine::shutdownEngine()
@@ -24,6 +26,9 @@ namespace KAIBI
 
     void Engine::run()
     {
-		g_runtime_global_context.m_log_system->Log(LogLevel::Info, "Engine is running!");
+		while(true)
+		{
+
+		}
     }
 }
