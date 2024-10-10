@@ -3,7 +3,7 @@
 
 int main(int argc, char* argv[]) 
 {
-    auto app = KAIBI::CreateEngine();
+    // auto app = KAIBI::CreateEngine();
 
     KAIBI::Engine* engine = new KAIBI::Engine();
 

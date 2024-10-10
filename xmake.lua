@@ -5,7 +5,7 @@ add_requires("spdlog")
 set_languages("c++20")
 
 -- uncomment this line for MacOS
--- add_defines("KB_PLATFORM_WINDOWS")
+add_defines("KB_PLATFORM_WINDOWS")
 
 function traverse_directory(path)
     add_headerfiles(path .. "/**.h")
@@ -29,6 +29,6 @@ target("KAIBI")
 
 target("SANDBOX")
     set_kind("binary")
-    add_files("sandbox/src/**.cpp")
+    add_files("testbed/src/**.cpp")
     add_deps("KAIBI")
     traverse_directory("runtime")

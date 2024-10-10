@@ -1,13 +1,13 @@
 #include "kaibi.h"
 
-class Sandbox : public KAIBI::Engine
+class Testbed : public KAIBI::Engine
 {
 public:
-	Sandbox()
+	Testbed()
 	{
 	}
 
-	~Sandbox()
+	~Testbed()
 	{
 
 	}
@@ -15,5 +15,5 @@ public:
 
 KAIBI::Engine* KAIBI::CreateEngine()
 {
-    return new Sandbox();
+    return new Testbed();
 }
