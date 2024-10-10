@@ -1,14 +1,5 @@
 #include "pch.h"
 #include "function/render/window_system.h"
-#include "imgui.h"
-#include "imgui_impl_glfw.h"
-#include "imgui_impl_opengl3.h"
-
-
-// #include "core/event/event.h"
-// #include "core/event/key_event.h"
-// #include "core/event/mouse_event.h"
-// #include "core/event/window_event.h"
 #include <GLFW/glfw3.h>
 #include "glad/glad.h"
 
@@ -55,18 +46,6 @@ namespace KAIBI
             return;
         }
 
-        // Imgui
-        IMGUI_CHECKVERSION();
-        ImGui::CreateContext();
-        ImGuiIO& io = ImGui::GetIO(); (void)io;
-        io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;       // Enable Keyboard Controls
-        io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;        // Enable Gamepad Controls
-
-        // Setup Dear ImGui style
-        ImGui::StyleColorsDark();
-
-        // Setup Platform/Renderer bindings
-        ImGui_ImplOpenGL3_Init("#version 410");
 
         // set up event call back here 
         glfwSetWindowUserPointer(m_window, this);

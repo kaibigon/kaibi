@@ -6,7 +6,7 @@ add_requires("imgui", {config = {glfw_opengl3 = true}})
 set_languages("c++20")
 
 -- uncomment this line for MacOS
--- add_defines("KB_PLATFORM_WINDOWS")
+add_defines("KB_PLATFORM_WINDOWS")
 
 function traverse_directory(path)
     add_headerfiles(path .. "/**.h")
@@ -34,7 +34,7 @@ target("KAIBI")
     add_packages("glad", {public = true})
     -- set_pcxxheader("kaibi/src/kaibi.h")
 
-target("SANDBOX")
+target("TESTBED")
     set_kind("binary")
     add_files("testbed/src/**.cpp")
     add_deps("KAIBI")

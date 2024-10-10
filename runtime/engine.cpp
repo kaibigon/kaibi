@@ -2,6 +2,7 @@
 #include "engine.h"
 #include "core/log/log_system.h"
 #include "function/render/window_system.h"
+#include "function/render/imgui_system.h"
 #include "function/global/global_context.h"
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
@@ -44,24 +45,16 @@ namespace KAIBI
 
 		// render tick
 
-
 		// window poll event
 		g_runtime_global_context.m_window_system->pollEvents();
-        const bool should_window_close = g_runtime_global_context.m_window_system->shouldClose();
+        //const bool should_window_close = g_runtime_global_context.m_window_system->shouldClose();
 
 		glClearColor(1.0f, 0.0f, 1.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		ImGuiIO& io = ImGui::GetIO();
-		io.DisplaySize = ImVec2(1280.0f, 720.0f);
-		io.DisplayFramebufferScale = ImVec2(1.0f, 1.0f);
-
-
-		ImGui_ImplOpenGL3_NewFrame();
-		ImGui::NewFrame();
-		ImGui::ShowDemoWindow();
-		ImGui::Render();
-		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+		// imgui
+		g_runtime_global_context.m_imgui_system->newFrame();
+		g_runtime_global_context.m_imgui_system->render();
 	}
 
     void Engine::run()
@@ -70,10 +63,6 @@ namespace KAIBI
 
 		while(!window_system->shouldClose())
 		{
-			// ImGui_ImplOpenGL3_NewFrame();
-        	// ImGui_ImplGlfw_NewFrame();
-        	// ImGui::NewFrame();
-			// ImGui::ShowDemoWindow();
 			tickOneFrame();
 		}
     }
