@@ -1,5 +1,6 @@
 #pragma once
 #include "core/base/core.h"
+#include "function/global/global_context.h"
 
 // move to pch
 #include <memory>
@@ -45,6 +46,6 @@ namespace KAIBI
 
 } 
 
-// #define LOG_INFO(...) KAIBI::LogSystem::GetInstance()->Log(KAIBI::LogLevel::Info, __VA_ARGS__)
-// #define LOG_WARN(...) KAIBI::LogSystem::GetInstance()->Log(KAIBI::LogLevel::Warn, __VA_ARGS__)
-// #define LOG_ERROR(...) KAIBI::LogSystem::GetInstance()->Log(KAIBI::LogLevel::Error, __VA_ARGS__)
+#define LOG_INFO(...) g_runtime_global_context.m_log_system->Log(KAIBI::LogLevel::Info, __VA_ARGS__)
+#define LOG_WARN(...) g_runtime_global_context.m_log_system->Log(KAIBI::LogLevel::Warn, __VA_ARGS__)
+#define LOG_ERROR(...) g_runtime_global_context.m_log_system->Log(KAIBI::LogLevel::Error, __VA_ARGS__)

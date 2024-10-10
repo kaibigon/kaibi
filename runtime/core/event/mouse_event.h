@@ -1,6 +1,6 @@
 #pragma once
 
-#include "hzpch.h"
+#include "pch.h"
 #include "core/event/event.h"
 
 namespace KAIBI

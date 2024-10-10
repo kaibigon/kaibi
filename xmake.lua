@@ -27,7 +27,7 @@ target("KAIBI")
     set_pcxxheader("runtime/pch.h")
 
 
-    add_packages("spdlog", "glfw", {public = true})
+    add_packages("spdlog", {public = true}, "glfw", {public = true})
     -- set_pcxxheader("kaibi/src/kaibi.h")
 
 target("SANDBOX")

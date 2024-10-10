@@ -35,7 +35,6 @@ namespace KAIBI
 
 		// window poll event
 		g_runtime_global_context.m_window_system->pollEvents();
-		g_runtime_global_context.m_log_system->Log(LogLevel::Info, "Engine Tick One Frame!");
         const bool should_window_close = g_runtime_global_context.m_window_system->shouldClose();
 	}
 
