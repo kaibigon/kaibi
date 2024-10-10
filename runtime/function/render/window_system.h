@@ -21,7 +21,11 @@ namespace KAIBI
         WindowSystem();
         ~WindowSystem();
 
-        void initialize(const WindowCreateInfo& info);
+        void            initialize(const WindowCreateInfo& info);
+        void            pollEvents() const;
+        bool            shouldClose() const; 
+        GLFWwindow*     getWindow() const;
+
 
     private:
         GLFWwindow* m_Window;

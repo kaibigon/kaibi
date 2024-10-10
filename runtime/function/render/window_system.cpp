@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "window_system.h"
 
+#include "core/event/event.h"
 #include "GLFW/glfw3.h"
 
 namespace KAIBI
@@ -33,6 +34,21 @@ namespace KAIBI
         }
 
         // set up event call back here
+    }
+
+    void WindowSystem::pollEvents() const
+    {
+        glfwPollEvents();
+    }
+
+    bool WindowSystem::shouldClose() const
+    {
+        return glfwWindowShouldClose(m_Window);
+    }
+
+    GLFWwindow* WindowSystem::getWindow() const
+    {
+        return m_Window;
     }
 
 }

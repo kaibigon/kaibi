@@ -13,6 +13,9 @@ namespace KAIBI
 		void shutdownEngine();
 		void run(); // core game loop
 
+		// Add delta time
+		void tickOneFrame();
+
 	};
 
     Engine* CreateEngine();
