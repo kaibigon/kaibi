@@ -18,6 +18,12 @@ namespace KAIBI
 	{
 		g_runtime_global_context.startSystems();
 		g_runtime_global_context.m_log_system->Log(LogLevel::Info, "Engine Start Systems!");
+
+		// TODO: callback test, remove me
+		g_runtime_global_context.m_window_system->registerOnKeyFunc([](int key, int scancode, int action, int mods)
+		{
+			LOG_INFO("Key: %c, Scancode: %d, Action: %d, Mods: %d", (char)key, scancode, action, mods);
+		});
 	}
 
 	void Engine::shutdownEngine()
