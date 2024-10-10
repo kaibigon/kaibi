@@ -1,5 +1,9 @@
 #include "pch.h"
 #include "function/render/window_system.h"
+#include "imgui.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
+
 
 // #include "core/event/event.h"
 // #include "core/event/key_event.h"
@@ -29,13 +33,15 @@ namespace KAIBI
         }
 
         m_window = glfwCreateWindow(m_width, m_height, info.title.c_str(), nullptr, nullptr);
-        glfwMakeContextCurrent(m_window);
-
         if (!m_window)
         {
             glfwTerminate();
             return;
         }
+        glfwMakeContextCurrent(m_window);
+        // glfwSwapInterval(1); // enable vsync
+
+        // Imgui
 
         // set up event call back here 
         glfwSetWindowUserPointer(m_window, this);
