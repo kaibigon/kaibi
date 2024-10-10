@@ -1,6 +1,6 @@
 #include "kaibi.h"
 
-class Sandbox : public KAIBI::Application
+class Sandbox : public KAIBI::Engine
 {
 public:
 	Sandbox()
@@ -13,7 +13,7 @@ public:
 	}
 };
 
-KAIBI::Application* KAIBI::CreateApplication()
+KAIBI::Engine* KAIBI::CreateEngine()
 {
     return new Sandbox();
 }

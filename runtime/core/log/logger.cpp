@@ -3,18 +3,15 @@
 
 namespace KAIBI 
 {
-
-	std::shared_ptr<Logger> Logger::s_Instance = nullptr;
-
-	void Logger::Init()
+	LogSystem::LogSystem()
 	{
-		if (!s_Instance)
-		{
-			s_Instance = std::make_shared<Logger>();
-		}
 	}
 
-    std::string Logger::GetLogLevelString(LogLevel level) const
+	LogSystem::~LogSystem()
+	{
+	}
+
+    std::string LogSystem::GetLogLevelString(LogLevel level) const
 	{
 		switch (level)
 		{
@@ -28,7 +25,7 @@ namespace KAIBI
 		return "INFO";
 	}
 	
-	std::string Logger::GetTime() const
+	std::string LogSystem::GetTime() const
 	{
 		auto now = std::chrono::system_clock::now();
         std::time_t now_time = std::chrono::system_clock::to_time_t(now);
@@ -44,7 +41,7 @@ namespace KAIBI
         return stream.str();
 	}
 
-	void Logger::Log(LogLevel level, std::string message, ...)
+	void LogSystem::Log(LogLevel level, std::string message, ...)
 	{
 		std::string logMessage = "[" + GetTime() + "]" + " [" + GetLogLevelString(level) + "] " + message + "\n";
 
@@ -54,17 +51,4 @@ namespace KAIBI
 		va_end(args);
 
 	}
-
-    // std::shared_ptr<spdlog::logger> Logger::s_CoreLogger;
-    // std::shared_ptr<spdlog::logger> Logger::s_ClientLogger;
-
-    // void Logger::Init()
-	// {
-	// 	spdlog::set_pattern("%^[%T] %n: %v%$");
-	// 	s_CoreLogger = spdlog::stdout_color_mt("KAIBI");
-	// 	s_CoreLogger->set_level(spdlog::level::trace);
-
-	// 	s_ClientLogger = spdlog::stdout_color_mt("APP");
-	// 	s_ClientLogger->set_level(spdlog::level::trace);
-	// }
 }

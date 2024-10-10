@@ -1,5 +1,5 @@
 #pragma once
-#include "core/core.h"
+#include "core/base/core.h"
 
 // move to pch
 #include <memory>
@@ -23,18 +23,21 @@ namespace KAIBI
         Error,
     };
 
-    class KAPI Logger {
+    class KAPI LogSystem {
     public:
-        static void Init();
+        LogSystem();
+        ~LogSystem();
+
+        // static void Init();
 
         // NOTE: For some reasons, the variadic arguments are not working if we pass message as reference (and only broken on Windows, no issues on Mac)
         // TODO: Find anohter work around here
         void Log(LogLevel level, std::string message, ...);
 
-		static std::shared_ptr<Logger> GetInstance() { return s_Instance; }
+		// static std::shared_ptr<Logger> GetInstance() { return s_Instance; }
 
     private:
-        static std::shared_ptr<Logger> s_Instance;
+        // static std::shared_ptr<Logger> s_Instance;
 
         std::string GetTime() const;
         std::string GetLogLevelString(LogLevel level) const;
@@ -42,6 +45,6 @@ namespace KAIBI
 
 } 
 
-#define LOG_INFO(...) KAIBI::Logger::GetInstance()->Log(KAIBI::LogLevel::Info, __VA_ARGS__)
-#define LOG_WARN(...) KAIBI::Logger::GetInstance()->Log(KAIBI::LogLevel::Warn, __VA_ARGS__)
-#define LOG_ERROR(...) KAIBI::Logger::GetInstance()->Log(KAIBI::LogLevel::Error, __VA_ARGS__)
+// #define LOG_INFO(...) KAIBI::LogSystem::GetInstance()->Log(KAIBI::LogLevel::Info, __VA_ARGS__)
+// #define LOG_WARN(...) KAIBI::LogSystem::GetInstance()->Log(KAIBI::LogLevel::Warn, __VA_ARGS__)
+// #define LOG_ERROR(...) KAIBI::LogSystem::GetInstance()->Log(KAIBI::LogLevel::Error, __VA_ARGS__)
