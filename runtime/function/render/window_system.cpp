@@ -117,6 +117,7 @@ namespace KAIBI
         WindowSystem* app = (WindowSystem*)glfwGetWindowUserPointer(window);
         if (app)
         {
+            // LOG_INFO("Window Mouse Button: %d, Action: %d, Mods: %d", button, action, mods);
             app->onMouseButton(button, action, mods);
         }
     }
