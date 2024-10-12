@@ -1,16 +1,19 @@
-#include "core/base/core.h"
-#include <GLFW/glfw3.h>
+// #pragma once
 
-namespace KAIBI
-{
-    class KAPI OpenGLContext
-    {
-    public:
-        OpenGLContext();
-        void initialize(GLFWwindow* window);
-        void swapBuffers();
+// #include "core/base/core.h"
+//  #include <GLFW/glfw3.h>
 
-    private:
-        GLFWwindow* m_window;
-    };
-}
+// class GLFWwindow; 
+// namespace KAIBI
+// {
+//     class KAPI OpenGLContext
+//     {
+//     public:
+//         OpenGLContext();
+//         void initialize(GLFWwindow* window);
+//         void swapBuffers();
+
+//     private:
+//         GLFWwindow* m_window;
+//     };
+// }

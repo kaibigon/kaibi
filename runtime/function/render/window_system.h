@@ -53,14 +53,7 @@ namespace KAIBI
         void registerOnWindowSizeFunc(onWindowSizeFunc func)    { m_onWindowSizeFunc.push_back(func); }
         void registerOnWindowCloseFunc(onWindowCloseFunc func)  { m_onWindowCloseFunc.push_back(func); }
 
-        bool isMouseButtonDown(int button) const
-        {
-            if (button < GLFW_MOUSE_BUTTON_1 || button > GLFW_MOUSE_BUTTON_LAST)
-            {
-                return false;
-            }
-            return glfwGetMouseButton(m_window, button) == GLFW_PRESS;
-        }
+        bool isMouseButtonDown(int button) const;
 
     protected:
         // window event callbacks

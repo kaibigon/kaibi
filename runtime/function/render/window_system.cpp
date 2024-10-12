@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "function/render/window_system.h"
 #include <GLFW/glfw3.h>
-#include "glad/glad.h"
+#include <glad/glad.h>
 
 namespace KAIBI
 {
@@ -79,6 +79,15 @@ namespace KAIBI
     GLFWwindow* WindowSystem::getWindow() const
     {
         return m_window;
+    }
+
+    bool WindowSystem::isMouseButtonDown(int button) const
+    {
+        if (button < GLFW_MOUSE_BUTTON_1 || button > GLFW_MOUSE_BUTTON_LAST)
+        {
+            return false;
+        }
+        return glfwGetMouseButton(m_window, button) == GLFW_PRESS;
     }
 
     // window event callbacks

@@ -1,13 +1,16 @@
+#pragma once
+
 #include "core/base/core.h"
 #include "core/log/log_system.h"
-#include <memory>
+#include "imgui.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
 
-#include <GLFW/glfw3.h>
+class GLFWwindow;
 
+// since this is purely for editor, maybe sometime in the future will move this to another place.
 namespace KAIBI
 {
-    class OpenGLContext;
-
     class KAPI RenderSystem
     {
     public:
@@ -17,9 +20,7 @@ namespace KAIBI
         void initialize(GLFWwindow* window);
         void shutdown();
 
+        void newFrame();
         void render();
-
-    private:
-        std::shared_ptr<OpenGLContext> m_opengl_context;
     };
 }

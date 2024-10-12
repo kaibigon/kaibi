@@ -22,7 +22,6 @@ namespace KAIBI
 
         m_render_system = std::make_shared<RenderSystem>();
         m_render_system->initialize(m_window_system->getWindow());
-
     }
 
     void RuntimeGlobalContext::shutdownSystems()
