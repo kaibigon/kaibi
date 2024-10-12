@@ -5,7 +5,6 @@ add_requires("imgui docking", {config = {glfw_opengl3 = true}})
 
 set_languages("c++20")
 
--- uncomment this line for MacOS
 if is_os("windows") then
     add_defines("KB_PLATFORM_WINDOWS")
 elseif is_os("linux") then
@@ -30,7 +29,6 @@ target("KAIBI")
     add_files("runtime/**.cpp")
     -- add_headerfiles("kaibi/**.h")
     add_includedirs("runtime/")
-
     set_pcxxheader("runtime/pch.h")
 
 

@@ -8,6 +8,7 @@
 #include "imgui_impl_opengl3.h"
 #include <GLFW/glfw3.h>
 
+// since this is purely for editor, maybe sometime in the future will move this to another place.
 namespace KAIBI
 {
     class KAPI ImguiSystem
@@ -23,13 +24,5 @@ namespace KAIBI
         void render();
 
 	private:
-		// bool OnMousePressedEvent(MouseButtonPressedEvent& e);	
-		// bool OnMouseReleasedEvent(MouseButtonReleasedEvent& e);
-		// bool OnMouseMovedEvent(MouseMovedEvent& e);
-		// bool OnMouseScrolledEvent(MouseScrolledEvent& e);
-		// bool OnKeyPressedEvent(KeyPressedEvent& e);
-		// bool OnKeyReleasedEvent(KeyReleasedEvent& e);
-		// bool OnKeyTypedEvent(KeyTypedEvent& e);
-		// bool OnWindowResizeEvent(WindowResizeEvent& e);
     };
 }

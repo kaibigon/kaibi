@@ -2,8 +2,10 @@
 
 #ifdef KB_PLATFORM_WINDOWS
 	#ifdef KB_BUILD_DLL
+		// #define KAPI
 		#define	KAPI __declspec(dllexport)
 	#else
+		// #define KAPI
 		#define KAPI __declspec(dllimport)
 	#endif
 #else

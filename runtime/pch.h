@@ -14,6 +14,6 @@
 
 #include "core/log/log_system.h"
 
-#ifdef HZ_PLATFORM_WINDOWS
+#ifdef KB_PLATFORM_WINDOWS
 #include <Windows.h>
 #endif
