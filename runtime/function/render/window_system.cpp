@@ -37,14 +37,15 @@ namespace KAIBI
             glfwTerminate();
             return;
         }
-        glfwMakeContextCurrent(m_window);
-        // glfwSwapInterval(1); // enable vsync
-        int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-        if (!status)
-        {
-            LOG_ERROR("Failed to initialize GLAD");
-            return;
-        }
+
+        // glfwMakeContextCurrent(m_window);
+        // // glfwSwapInterval(1); // enable vsync
+        // int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+        // if (!status)
+        // {
+        //     LOG_ERROR("Failed to initialize GLAD");
+        //     return;
+        // }
 
         // set up event call back here 
         glfwSetWindowUserPointer(m_window, this);
