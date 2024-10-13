@@ -2,6 +2,7 @@
 #include "render_system.h"
 #include "function/global/global_context.h"
 #include "function/render/window_system.h"
+#include "function/render/opengl_context.h"
 
 #include <glad/glad.h>  
 
@@ -17,14 +18,8 @@ namespace KAIBI
 
     void RenderSystem::initialize(GLFWwindow* window)
     {
-        glfwMakeContextCurrent(window);
-        glfwSwapInterval(1); // enable vsync
-        int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-        if (!status)
-        {
-            LOG_ERROR("Failed to initialize GLAD");
-            return;
-        }
+        m_opengl_context = std::make_shared<OpenGLContext>();
+        m_opengl_context->initialize(window);
     }
 
     void RenderSystem::shutdown()
@@ -37,5 +32,10 @@ namespace KAIBI
 
     void RenderSystem::render()
     {
+    }
+
+    void RenderSystem::swapBuffers()
+    {
+        m_opengl_context->swapBuffers();
     }
 }
