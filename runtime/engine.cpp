@@ -4,9 +4,8 @@
 #include "function/render/window_system.h"
 #include "function/render/imgui_system.h"
 #include "function/global/global_context.h"
-#include "imgui.h"
-#include "imgui_impl_glfw.h"
-#include "imgui_impl_opengl3.h"
+#include "function/render/render_system.h"
+
 #include <GLFW/glfw3.h>
 #include "glad/glad.h"
 
@@ -110,6 +109,7 @@ const char *fragmentShaderSource = "#version 330 core\n"
 		g_runtime_global_context.m_imgui_system->render();
 
 		g_runtime_global_context.m_window_system->pollEvents();
+		g_runtime_global_context.m_render_system->swapBuffers();
 
         const bool should_window_close = g_runtime_global_context.m_window_system->shouldClose();
         return !should_window_close;

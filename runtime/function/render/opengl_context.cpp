@@ -23,6 +23,10 @@ namespace KAIBI
             LOG_ERROR("Failed to initialize GLAD");
             return;
         }
+        else
+        {
+            LOG_INFO("OpenGL Version: %s", glGetString(GL_VERSION));
+        }
     }
 
     void OpenGLContext::swapBuffers() 

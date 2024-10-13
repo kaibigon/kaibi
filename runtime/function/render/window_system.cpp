@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "function/render/window_system.h"
+
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
 
@@ -38,17 +39,8 @@ namespace KAIBI
             return;
         }
 
-        // glfwMakeContextCurrent(m_window);
-        // // glfwSwapInterval(1); // enable vsync
-        // int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-        // if (!status)
-        // {
-        //     LOG_ERROR("Failed to initialize GLAD");
-        //     return;
-        // }
-
         // set up event call back here 
-        glfwSetWindowUserPointer(m_window, this);
+        glfwSetWindowUserPointer(m_window, this); // do we need this?
         glfwSetKeyCallback(m_window, keyCallback);
         glfwSetCharCallback(m_window, charCallback);
         glfwSetCharModsCallback(m_window, charModsCallback);
@@ -69,7 +61,7 @@ namespace KAIBI
         glfwPollEvents();
 
         // move to other place
-        glfwSwapBuffers(m_window);
+        // glfwSwapBuffers(m_window);
     }
 
     bool WindowSystem::shouldClose() const

@@ -3,7 +3,8 @@
 #include "pch.h"
 #include "core/base/core.h"
 #include "core/log/log_system.h"
-#include <GLFW/glfw3.h>
+
+struct GLFWwindow;
 
 namespace KAIBI
 {
