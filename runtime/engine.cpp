@@ -54,10 +54,10 @@ const char *fragmentShaderSource = "#version 330 core\n"
 		// glAttachShader(shaderProgram, fragmentShader);
 		// glLinkProgram(shaderProgram);
 
-		float vertices [3 * 3] = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.0f,  0.5f, 0.0f
+		float vertices [] = {
+			-0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
+			 0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
+			 0.0f,  0.5f, 0.0f, 0.0f, 0.0f, 1.0f
 		};
 
 		unsigned int indices[3] = {
@@ -75,8 +75,11 @@ const char *fragmentShaderSource = "#version 330 core\n"
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indexBuffer);
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0);
+
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+		glEnableVertexAttribArray(1);
 	}
 
 	void Engine::shutdownEngine()
@@ -103,8 +106,8 @@ const char *fragmentShaderSource = "#version 330 core\n"
 		g_runtime_global_context.m_render_system->render();
 
         glBindVertexArray(m_vertexArray); 
-        // glDrawArrays(GL_TRIANGLES, 0, 3);
-		glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+		// glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
 
 		// imgui
 		g_runtime_global_context.m_imgui_system->newFrame();
