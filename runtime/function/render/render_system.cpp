@@ -32,6 +32,7 @@ namespace KAIBI
 
     void RenderSystem::render()
     {
+        m_opengl_context->bindShader();
     }
 
     void RenderSystem::swapBuffers()

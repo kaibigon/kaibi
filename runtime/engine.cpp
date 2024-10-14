@@ -41,18 +41,18 @@ const char *fragmentShaderSource = "#version 330 core\n"
 		g_runtime_global_context.startSystems();
 		LOG_INFO("---START SUBSYSTEMS");
 
-		vertexShader = glCreateShader(GL_VERTEX_SHADER);
-        glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
-        glCompileShader(vertexShader);
+		// vertexShader = glCreateShader(GL_VERTEX_SHADER);
+        // glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
+        // glCompileShader(vertexShader);
 
-        fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-        glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
-        glCompileShader(fragmentShader);
+        // fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+        // glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
+        // glCompileShader(fragmentShader);
 
-		shaderProgram = glCreateProgram();
-		glAttachShader(shaderProgram, vertexShader);
-		glAttachShader(shaderProgram, fragmentShader);
-		glLinkProgram(shaderProgram);
+		// shaderProgram = glCreateProgram();
+		// glAttachShader(shaderProgram, vertexShader);
+		// glAttachShader(shaderProgram, fragmentShader);
+		// glLinkProgram(shaderProgram);
 
 		float vertices [3 * 3] = {
 			-0.5f, -0.5f, 0.0f,
@@ -96,10 +96,12 @@ const char *fragmentShaderSource = "#version 330 core\n"
 
 		// window poll event
 
-		glClearColor(1.0f, 0.5f, 1.0f, 1.0f);
+		glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		glUseProgram(shaderProgram);
+		// glUseProgram(shaderProgram);
+		g_runtime_global_context.m_render_system->render();
+
         glBindVertexArray(m_vertexArray); 
         // glDrawArrays(GL_TRIANGLES, 0, 3);
 		glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
