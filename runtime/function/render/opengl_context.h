@@ -2,6 +2,7 @@
 
 #include "core/base/core.h"
 #include "function/render/opengl_shader.h"
+#include "function/render/graphics_context.h"
 #include <GLFW/glfw3.h>
 #include <memory>
 
@@ -9,14 +10,15 @@
 class GLFWwindow; 
 namespace KAIBI
 {
-    class KAPI OpenGLContext
+    class KAPI OpenGLContext : public GraphicsContext
     {
     public:
-        OpenGLContext();
-        void initialize(GLFWwindow* window);
-        void swapBuffers();
+        OpenGLContext(GLFWwindow* window);
+        void initialize() override;
+        void swapBuffers() override;
 
-        void bindShader();
+        void bindShader() override;
+        void draw() override;
 
     private:
         GLFWwindow* m_window;

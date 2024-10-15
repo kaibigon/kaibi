@@ -7,14 +7,13 @@
 
 namespace KAIBI
 {
-    OpenGLContext::OpenGLContext()
+    OpenGLContext::OpenGLContext(GLFWwindow* window)
+        : m_window(window)
     {
     }
 
-    void OpenGLContext::initialize(GLFWwindow* window)
+    void OpenGLContext::initialize()
     {
-        m_window = window;
-
         glfwMakeContextCurrent(m_window);
         glfwSwapInterval(1); // enable vsync
         int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
@@ -61,5 +60,11 @@ namespace KAIBI
     void OpenGLContext::bindShader()
     {
         m_shader->bind();
+    }
+
+    void OpenGLContext::draw()
+    {
+        glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
     }
 }

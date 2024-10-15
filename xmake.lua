@@ -26,6 +26,7 @@ target("KAIBI")
 
     set_kind("shared")
     add_defines("KB_BUILD_DLL")
+    add_defines("KB_GRAPHICS_OPENGL")
     add_files("runtime/**.cpp")
     -- add_headerfiles("kaibi/**.h")
     add_includedirs("runtime/")

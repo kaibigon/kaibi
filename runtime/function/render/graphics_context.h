@@ -2,18 +2,17 @@
 
 #include "core/base/core.h"
 
-// THIS IS SOMEHOW COMPLETELY USELESS FOR NOW 
 // AS WE ONLY HAVE OPENGL CONTEXT FOR NOW
+// SEEMS MEANINGLESS TO PRETEND WE HAVE OTHER GRAPHICS CONTEXT
 namespace KAIBI
 {
     class KAPI GraphicsContext
     {
     public:
+        virtual ~GraphicsContext() = default;
         virtual void initialize() = 0;
         virtual void swapBuffers() = 0;
-
-        // init serveral contexts like this???
-        static GraphicsContext* createOpenGLContext(void* window);
-
+        virtual void bindShader() = 0;
+        virtual void draw() = 0;
     };
 }

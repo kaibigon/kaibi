@@ -11,7 +11,7 @@ class GLFWwindow;
 // since this is purely for editor, maybe sometime in the future will move this to another place.
 namespace KAIBI
 {
-    class OpenGLContext;
+    class GraphicsContext;
     class KAPI RenderSystem
     {
     public:
@@ -26,6 +26,6 @@ namespace KAIBI
 
         void swapBuffers();
     private:
-        std::shared_ptr<OpenGLContext> m_opengl_context;    
+        std::shared_ptr<GraphicsContext> m_graphics_context;    
     };
 }
