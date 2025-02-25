@@ -1,28 +1,19 @@
 #pragma once
+#include "core/base/core.h"
 
 namespace KAIBI
 {
-    class VertexBuffer
+    class Mesh
     {
     public:
-        VertexBuffer();
-        virtual ~VertexBuffer();
+        Mesh(const float* vertices, unsigned int vertexCount, const unsigned int* indices, unsigned int indexCount);
+        ~Mesh();
 
-        virtual void bind() = 0;
-        virtual void unbind() = 0;
+        void bind();
+        void unbind();
+        void draw();
 
-        static VertexBuffer* create(float* vertices, size_t size);
-    };
-
-    class IndexBuffer
-    {
-    public:
-        IndexBuffer();
-        virtual ~IndexBuffer();
-
-        virtual void bind();
-        virtual void unbind();
-
-        static IndexBuffer* create(unsigned int* indices, size_t size);
+    private:
+        unsigned int m_VAO, m_VBO, m_EBO;
     };
 }

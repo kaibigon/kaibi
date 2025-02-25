@@ -7,6 +7,7 @@
 
 #include <glad/glad.h>  
 
+// serves as render pass
 namespace KAIBI
 {
     RenderSystem::RenderSystem()
@@ -36,6 +37,12 @@ namespace KAIBI
     void RenderSystem::render()
     {
         m_graphics_context->bindShader();
+        m_graphics_context->draw();
+    }
+
+    void RenderSystem::clear()
+    {
+
     }
 
     void RenderSystem::swapBuffers()

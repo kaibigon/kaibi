@@ -14,5 +14,6 @@ namespace KAIBI
         virtual void swapBuffers() = 0;
         virtual void bindShader() = 0;
         virtual void draw() = 0;
+        virtual void clear() = 0;
     };
 }

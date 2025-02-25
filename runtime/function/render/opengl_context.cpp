@@ -14,6 +14,7 @@ namespace KAIBI
 
     void OpenGLContext::initialize()
     {
+        // opengl initialization
         glfwMakeContextCurrent(m_window);
         glfwSwapInterval(1); // enable vsync
         int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
@@ -47,6 +48,17 @@ namespace KAIBI
 
         m_shader = std::make_unique<OpenGLShader>(vertexShaderSource, fragmentShaderSource);
 
+		float vertices [] = {
+			-0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
+			 0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
+			 0.0f,  0.5f, 0.0f, 0.0f, 0.0f, 1.0f
+		};
+
+		unsigned int indices[3] = {
+			0, 1, 2
+		};
+
+        m_mesh = std::make_shared<Mesh>(vertices, 3 * 6, indices, 3);
     }
 
 
@@ -61,6 +73,12 @@ namespace KAIBI
     }
 
     void OpenGLContext::draw()
+    {
+        clear();
+        m_mesh->draw();
+    }
+
+    void OpenGLContext::clear()
     {
         glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);

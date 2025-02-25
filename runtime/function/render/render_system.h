@@ -23,6 +23,7 @@ namespace KAIBI
 
         void newFrame();
         void render();
+        void clear();
 
         void swapBuffers();
     private:

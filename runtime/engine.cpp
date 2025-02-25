@@ -52,22 +52,24 @@ const char *fragmentShaderSource = "#version 330 core\n"
 			0, 1, 2
 		};
 
-		glGenVertexArrays(1, &m_vertexArray);
-		glBindVertexArray(m_vertexArray);
+		// glGenVertexArrays(1, &m_vertexArray);
+		// glBindVertexArray(m_vertexArray);
 
-		glGenBuffers(1, &m_vertexBuffer);
-		glBindBuffer(GL_ARRAY_BUFFER, m_vertexBuffer);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+		// // vertex buffer VBO
+		// glGenBuffers(1, &m_vertexBuffer);
+		// glBindBuffer(GL_ARRAY_BUFFER, m_vertexBuffer);
+		// glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-		glGenBuffers(1, &m_indexBuffer);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indexBuffer);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+		// // index buffer EBO
+		// glGenBuffers(1, &m_indexBuffer);
+		// glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indexBuffer);
+		// glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
-		glEnableVertexAttribArray(0);
+		// glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+		// glEnableVertexAttribArray(0);
 
-		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
-		glEnableVertexAttribArray(1);
+		// glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+		// glEnableVertexAttribArray(1);
 	}
 
 	void Engine::shutdownEngine()
@@ -87,15 +89,17 @@ const char *fragmentShaderSource = "#version 330 core\n"
 
 		// window poll event
 
-		glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
+		// move to renderer
+		// glClearColor(0.2f, 0.2f, 0.2f, 1.0f); 
+		// glClear(GL_COLOR_BUFFER_BIT);
 
-		// glUseProgram(shaderProgram);
+		g_runtime_global_context.m_render_system->clear();
+
 		g_runtime_global_context.m_render_system->render();
 
-        glBindVertexArray(m_vertexArray); 
-        glDrawArrays(GL_TRIANGLES, 0, 3);
-		// glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
+		// move this inside render system's render()
+        // glBindVertexArray(m_vertexArray); 
+        // glDrawArrays(GL_TRIANGLES, 0, 3);
 
 		// imgui
 		g_runtime_global_context.m_imgui_system->newFrame();

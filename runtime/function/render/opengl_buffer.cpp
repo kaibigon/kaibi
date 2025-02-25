@@ -1,49 +1,55 @@
 #include "pch.h"
 #include "function/render/opengl_buffer.h"
 
+#include <GLFW/glfw3.h>
+#include <glad/glad.h>
+
 namespace KAIBI
 {
 
-    VertexBuffer::VertexBuffer()
+    Mesh::Mesh(const float* vertices, unsigned int vertexCount, const unsigned int* indices, unsigned int indexCount)
     {
+        glGenVertexArrays(1, &m_VAO);        
+        glBindVertexArray(m_VAO);
+
+        glGenBuffers(1, &m_VBO);
+        glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
+        glBufferData(GL_ARRAY_BUFFER, vertexCount * sizeof(float), vertices, GL_STATIC_DRAW);
+
+        glGenBuffers(1, &m_EBO);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexCount * sizeof(unsigned int), indices, GL_STATIC_DRAW);
+
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+		glEnableVertexAttribArray(0);
+
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+		glEnableVertexAttribArray(1);
+
+        glBindVertexArray(0);
+    }
+    
+    Mesh::~Mesh()
+    {
+        glDeleteVertexArrays(1, &m_VAO);
+        glDeleteBuffers(1, &m_VBO);
+        glDeleteBuffers(1, &m_EBO);
     }
 
-    VertexBuffer::~VertexBuffer()
+    void Mesh::bind()
     {
+        glBindVertexArray(m_VAO);
     }
 
-    void VertexBuffer::bind()
+    void Mesh::unbind()
     {
-    }
+        glBindVertexArray(0);
+    }   
 
-    void VertexBuffer::unbind()
+    void Mesh::draw()
     {
-    }
-
-    VertexBuffer* VertexBuffer::create(float* vertices, size_t size)
-    {
-        return nullptr;
-    }
-
-
-    IndexBuffer::IndexBuffer()
-    {
-    }
-
-    IndexBuffer::~IndexBuffer()
-    {
-    }
-
-    void IndexBuffer::bind()
-    {
-    }
-
-    void IndexBuffer::unbind()
-    {
-    }
-
-    IndexBuffer* IndexBuffer::create(unsigned int* indices, size_t size)
-    {
-        return nullptr;
+        glBindVertexArray(m_VAO);
+        glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
+        glBindVertexArray(0);
     }
 }
