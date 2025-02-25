@@ -27,8 +27,6 @@ namespace KAIBI
             LOG_INFO("OpenGL Version: %s", glGetString(GL_VERSION));
         }
 
-
-
         std::string vertexShaderSource ="#version 330 core\n"
             "layout (location = 0) in vec3 aPos;\n"
             "layout (location = 1) in vec3 aColor;\n"

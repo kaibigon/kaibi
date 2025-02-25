@@ -41,19 +41,7 @@ const char *fragmentShaderSource = "#version 330 core\n"
 		g_runtime_global_context.startSystems();
 		LOG_INFO("---START SUBSYSTEMS");
 
-		// vertexShader = glCreateShader(GL_VERTEX_SHADER);
-        // glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
-        // glCompileShader(vertexShader);
-
-        // fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-        // glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
-        // glCompileShader(fragmentShader);
-
-		// shaderProgram = glCreateProgram();
-		// glAttachShader(shaderProgram, vertexShader);
-		// glAttachShader(shaderProgram, fragmentShader);
-		// glLinkProgram(shaderProgram);
-
+		// abstract this
 		float vertices [] = {
 			-0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
 			 0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
