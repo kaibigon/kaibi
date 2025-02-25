@@ -58,7 +58,7 @@ namespace KAIBI
 			0, 1, 2
 		};
 
-        m_mesh = std::make_shared<Mesh>(vertices, 3 * 6, indices, 3);
+        m_buffer = std::make_shared<OpenGLBuffer>(vertices, 3 * 6, indices, 3);
     }
 
 
@@ -75,7 +75,9 @@ namespace KAIBI
     void OpenGLContext::draw()
     {
         clear();
-        m_mesh->draw();
+        m_buffer->bind();
+        glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
+        m_buffer->unbind();
     }
 
     void OpenGLContext::clear()

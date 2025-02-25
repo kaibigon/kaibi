@@ -3,11 +3,11 @@
 
 namespace KAIBI
 {
-    class Mesh
+    class OpenGLBuffer
     {
     public:
-        Mesh(const float* vertices, unsigned int vertexCount, const unsigned int* indices, unsigned int indexCount);
-        ~Mesh();
+        OpenGLBuffer(const float* vertices, unsigned int vertexCount, const unsigned int* indices, unsigned int indexCount);
+        ~OpenGLBuffer();
 
         void bind();
         void unbind();

@@ -7,7 +7,7 @@
 namespace KAIBI
 {
 
-    Mesh::Mesh(const float* vertices, unsigned int vertexCount, const unsigned int* indices, unsigned int indexCount)
+    OpenGLBuffer::OpenGLBuffer(const float* vertices, unsigned int vertexCount, const unsigned int* indices, unsigned int indexCount)
     {
         glGenVertexArrays(1, &m_VAO);        
         glBindVertexArray(m_VAO);
@@ -29,24 +29,25 @@ namespace KAIBI
         glBindVertexArray(0);
     }
     
-    Mesh::~Mesh()
+    OpenGLBuffer::~OpenGLBuffer()
     {
         glDeleteVertexArrays(1, &m_VAO);
         glDeleteBuffers(1, &m_VBO);
         glDeleteBuffers(1, &m_EBO);
     }
 
-    void Mesh::bind()
+    void OpenGLBuffer::bind()
     {
         glBindVertexArray(m_VAO);
     }
 
-    void Mesh::unbind()
+    void OpenGLBuffer::unbind()
     {
         glBindVertexArray(0);
     }   
-
-    void Mesh::draw()
+    
+    // testing code
+    void OpenGLBuffer::draw()
     {
         glBindVertexArray(m_VAO);
         glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);

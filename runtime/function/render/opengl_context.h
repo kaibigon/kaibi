@@ -25,6 +25,6 @@ namespace KAIBI
     private:
         GLFWwindow* m_window;
         std::unique_ptr<OpenGLShader> m_shader;
-        std::shared_ptr<Mesh> m_mesh;
+        std::shared_ptr<OpenGLBuffer> m_buffer;
     };
 }
