@@ -48,17 +48,33 @@ namespace KAIBI
 
         m_shader = std::make_unique<OpenGLShader>(vertexShaderSource, fragmentShaderSource);
 
+
+        // inside buffer class we assume we pass data for position and color
 		float vertices [] = {
-			-1.0f, -1.0f, 0.0f, 1.0f, 0.0f, 0.0f,
-			 1.0f, -1.0f, 0.0f, 0.0f, 1.0f, 0.0f,
-			 0.0f,  1.0f, 0.0f, 0.0f, 0.0f, 1.0f
+			-0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
+			 0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
+			 0.0f,  0.5f, 0.0f, 0.0f, 0.0f, 1.0f
 		};
 
 		unsigned int indices[3] = {
 			0, 1, 2
 		};
 
-        m_buffer = std::make_shared<OpenGLBuffer>(vertices, 3 * 6, indices, 3);
+        float quadVertices[] = {
+            -0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f,  
+             0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 
+             0.5f,  0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 
+            -0.5f,  0.5f, 0.0f, 1.0f, 1.0f, 0.0f  
+        };
+
+        // Quad indices (two triangles)
+        unsigned int quadIndices[] = {
+            0, 1, 2,  // First triangle
+            2, 3, 0   // Second triangle
+        };
+
+        // m_buffer = std::make_shared<OpenGLBuffer>(vertices, 3 * 6, indices, 3);
+        m_buffer = std::make_shared<OpenGLBuffer>(quadVertices, 3 * 8, quadIndices, 6);
     }
 
 
@@ -75,9 +91,10 @@ namespace KAIBI
     void OpenGLContext::draw()
     {
         clear();
-        m_buffer->bind();
-        glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
-        m_buffer->unbind();
+        m_buffer->draw();
+        // m_buffer->bind();
+        // glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
+        // m_buffer->unbind();
     }
 
     void OpenGLContext::clear()
