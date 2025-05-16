@@ -3,7 +3,6 @@
 
 #include "function/render/window_system.h"
 #include "function/render/imgui_system.h"
-#include "function/render/render_system.h"
 
 namespace KAIBI
 {
@@ -17,8 +16,8 @@ namespace KAIBI
         WindowCreateInfo window_create_info;
         m_window_system->initialize(window_create_info);
 
-        m_render_system = std::make_shared<RenderSystem>();
-        m_render_system->initialize(m_window_system->getWindow());
+        // m_render_system = std::make_shared<RenderSystem>();
+        // m_render_system->initialize(m_window_system->getWindow());
 
         m_imgui_system = std::make_shared<ImguiSystem>();
         m_imgui_system->initialize(m_window_system->getWindow());

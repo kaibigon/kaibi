@@ -39,6 +39,21 @@ namespace KAIBI
             return;
         }
 
+        // Make the window's context current
+        glfwMakeContextCurrent(m_window);
+
+        // Initialize GLAD
+        if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+        {
+            LOG_ERROR("Failed to initialize GLAD");
+            glfwDestroyWindow(m_window);
+            glfwTerminate();
+            return;
+        }
+
+        // Enable VSync
+        glfwSwapInterval(1);
+
         // set up event call back here 
         glfwSetWindowUserPointer(m_window, this); // do we need this?
         glfwSetKeyCallback(m_window, keyCallback);
