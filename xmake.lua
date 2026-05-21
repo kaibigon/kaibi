@@ -1,4 +1,4 @@
-set_project("RenderTest")
+set_project("kaibi")
 set_version("0.1.0")
 set_xmakever("2.8.0")
 
@@ -6,8 +6,9 @@ set_languages("c++20")
 set_warnings("all", "error")
 
 add_rules("mode.debug", "mode.release")
+add_rules("plugin.compile_commands.autoupdate", {outputdir = ".vscode"})
 
-target("RenderTest")
+target("kaibi")
     set_kind("binary")
     add_files("src/*.cpp")
 
