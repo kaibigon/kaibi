@@ -1,0 +1,27 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug kaibi (MSVC / cppvsdbg)",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/windows/x64/debug/kaibi.exe",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "preLaunchTask": "xmake: build (debug)",
+            "symbolOptions": {
+                "searchMicrosoftSymbolServer": true
+            }
+        },
+        {
+            "name": "Debug kaibi (CodeLLDB)",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/windows/x64/debug/kaibi.exe",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "xmake: build (debug)"
+        }
+    ]
+}

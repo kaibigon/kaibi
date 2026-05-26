@@ -1,7 +1,7 @@
 {
     files = {
-        [[build\.objs\kaibi\windows\x64\release\src\DXDebugLayer.cpp.obj]],
-        [[build\.objs\kaibi\windows\x64\release\src\main.cpp.obj]]
+        [[build\.objs\kaibi\windows\x64\debug\src\DXDebugLayer.cpp.obj]],
+        [[build\.objs\kaibi\windows\x64\debug\src\main.cpp.obj]]
     },
     values = {
         [[C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Tools\MSVC\14.44.35207\bin\HostX64\x64\link.exe]],
@@ -10,8 +10,8 @@
             "-dynamicbase",
             "-nxcompat",
             "-machine:x64",
-            "/opt:ref",
-            "/opt:icf",
+            "-debug",
+            [[-pdb:build\windows\x64\debug\kaibi.pdb]],
             "d3d12.lib",
             "dxgi.lib",
             "d3dcompiler.lib",

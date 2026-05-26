@@ -6,10 +6,14 @@ set_languages("c++20")
 set_warnings("all", "error")
 
 add_rules("mode.debug", "mode.release")
+add_rules("plugin.compile_commands.autoupdate", { outputdir = ".vscode" })
+
+add_requires("spdlog")
 
 target("kaibi")
     set_kind("binary")
     add_files("src/*.cpp")
+    add_packages("spdlog")
 
     if is_plat("windows") then
         add_defines("UNICODE", "_UNICODE", "NOMINMAX", "WIN32_LEAN_AND_MEAN")

@@ -7,10 +7,11 @@ IndentWidth: 4
 TabWidth: 4
 UseTab: Never
 ColumnLimit: 120
+AccessModifierOffset: -4
 BreakBeforeBraces: Allman
 IndentCaseLabels: false
 NamespaceIndentation: None
-IndentPPDirectives: AfterHash
+IndentPPDirectives: BeforeHash
 AlignConsecutiveAssignments: AcrossEmptyLinesAndComments
 
 # Pointers / references (int* p, Foo& bar)
@@ -41,14 +42,19 @@ AlignAfterOpenBracket: BlockIndent
 SortIncludes: CaseInsensitive
 IncludeBlocks: Regroup
 IncludeCategories:
+  # Precompiled headers — always first
   - Regex: '^"(pch\.h|stdafx\.h)"'
     Priority: -1
-  - Regex: '^<(Windows\.h|win.*\.h|d3d.*\.h|dxgi\.h|d3dcompiler\.h)>'
+  # Windows / DirectX / WRL platform headers
+  - Regex: '^<(Windows\.h|win.*\.h|d3d.*|dxgi.*|d3dcompiler\.h|wrl/.*)>'
     Priority: 1
+  # Other C-style system headers
   - Regex: '^<.*\.h>'
     Priority: 2
+  # C++ standard library
   - Regex: '^<.*>'
     Priority: 3
+  # Project headers
   - Regex: '^".*"'
     Priority: 4
 

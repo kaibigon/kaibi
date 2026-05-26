@@ -1,78 +1,58 @@
+#include <d3d12.h>
 #include <Windows.h>
+#include <winerror.h>
 #include <winuser.h>
+#include <wrl/client.h>
 
-constexpr wchar_t kWindowClass[] = L"kaibigon";
+#include <combaseapi.h>
+#include <spdlog/sinks/stdout_color_sinks.h>
+#include <spdlog/spdlog.h>
 
-LRESULT CALLBACK WindowProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
+#include <cstdio>
+
+#include "DXDebugLayer.h"
+
+using Microsoft::WRL::ComPtr;
+
+static void AttachDevConsole()
 {
-    switch (message)
+    if (!AllocConsole())
     {
-    case WM_CLOSE:
-        DestroyWindow(hwnd);
-        return 0;
-
-    case WM_DESTROY:
-        PostQuitMessage(0);
-        return 0;
-
-    default:
-        return DefWindowProcW(hwnd, message, wParam, lParam);
+        return;
     }
+    FILE* dummy = nullptr;
+    freopen_s(&dummy, "CONOUT$", "w", stdout);
+    freopen_s(&dummy, "CONOUT$", "w", stderr);
+    freopen_s(&dummy, "CONIN$", "r", stdin);
+    SetConsoleTitleW(L"kaibi - log");
+}
+
+static void InitLogger()
+{
+    auto logger = spdlog::stdout_color_mt("kaibi");
+    logger->set_level(spdlog::level::trace);
+    logger->set_pattern("[%H:%M:%S.%e] [%^%l%$] %v");
+    spdlog::set_default_logger(logger);
 }
 
 int WINAPI wWinMain(HINSTANCE instance, HINSTANCE, PWSTR, int showCmd)
 {
-    WNDCLASSEXW wc{};
-    wc.cbSize        = sizeof(wc);
-    wc.style         = CS_HREDRAW | CS_VREDRAW;
-    wc.lpfnWndProc   = WindowProc;
-    wc.hInstance     = instance;
-    wc.hCursor       = LoadCursorW(nullptr, IDC_ARROW);
-    wc.hbrBackground = reinterpret_cast<HBRUSH>(COLOR_WINDOW + 1);
-    wc.lpszClassName = kWindowClass;
+    AttachDevConsole();
+    InitLogger();
 
-    if (RegisterClassExW(&wc) == 0) return 1;
+    spdlog::info("kaibi starting");
+    DXDebugLayer::Get().Init();
 
-    constexpr int clientW = 1280;
-    constexpr int clientH = 720;
-    RECT rect{0, 0, clientW, clientH};
-    AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, FALSE);
+    ComPtr<ID3D12Device10> device;
+    D3D12CreateDevice(nullptr, D3D_FEATURE_LEVEL_11_0, IID_PPV_ARGS(&device));
 
-    HWND hwnd = CreateWindowExW(
-        0,
-        kWindowClass,
-        L"d3d12",
-        WS_OVERLAPPEDWINDOW,
-        CW_USEDEFAULT,
-        CW_USEDEFAULT,
-        rect.right - rect.left,
-        rect.bottom - rect.top,
-        nullptr,
-        nullptr,
-        instance,
-        nullptr
-    );
-
-    ShowWindow(hwnd, showCmd);
-    UpdateWindow(hwnd);
-
+    DXDebugLayer::Get().Shutdown();
+    POINT p;
     bool running = true;
     while (running)
     {
-        MSG msg{};
-        while (PeekMessageW(&msg, nullptr, 0, 0, PM_REMOVE))
-        {
-            if (msg.message == WM_QUIT)
-            {
-                running = false;
-                break;
-            }
-
-            TranslateMessage(&msg);
-            DispatchMessageW(&msg);
-        }
-
-        // render / update here
+        GetCursorPos(&p);
+        // spdlog::info("x: {}, y: {}", p.x, p.y);
     }
     return 0;
 }

@@ -2,26 +2,6 @@
     files = {
         [[src\main.cpp]]
     },
-    values = {
-        [[C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Tools\MSVC\14.44.35207\bin\HostX64\x64\cl.exe]],
-        {
-            "-nologo",
-            "-MD",
-            "-W3",
-            "-WX",
-            "-O2",
-            "-std:c++20",
-            "-DUNICODE",
-            "-D_UNICODE",
-            "-DNOMINMAX",
-            "-DWIN32_LEAN_AND_MEAN",
-            "/EHsc",
-            "-external:W0",
-            [[-external:IC:\Users\KaiWang\AppData\Local\.xmake\packages\s\spdlog\v1.15.3\f0315a3a96984a418ff57bb210e533f9\include]],
-            "/utf-8",
-            "-DNDEBUG"
-        }
-    },
     depfiles_format = "cl_json",
     depfiles = "{\
     \"Version\": \"1.2\",\
@@ -206,17 +186,27 @@
             \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\shared\\\\dxgiformat.h\",\
             \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\um\\\\d3dcommon.h\",\
             \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\um\\\\d3d12sdklayers.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\sinks\\\\stdout_color_sinks.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\sinks\\\\wincolor_sink.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\common.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\details\\\\null_mutex.h\",\
+            \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\winrt\\\\wrl\\\\client.h\",\
+            \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\winrt\\\\weakreference.h\",\
+            \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\winrt\\\\inspectable.h\",\
+            \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\winrt\\\\hstring.h\",\
+            \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\winrt\\\\roapi.h\",\
+            \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\winrt\\\\activation.h\",\
+            \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\winrt\\\\wrl\\\\def.h\",\
+            \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\winrt\\\\wrl\\\\internal.h\",\
+            \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\ucrt\\\\crtdbg.h\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\vcruntime_new_debug.h\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\vcruntime_new.h\",\
+            \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\shared\\\\pshpack8.h\",\
+            \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\shared\\\\poppack.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\sinks\\\\stdout_color_sinks.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\sinks\\\\wincolor_sink.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\common.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\details\\\\null_mutex.h\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\atomic\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\yvals.h\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\yvals_core.h\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\xkeycheck.h\",\
-            \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\ucrt\\\\crtdbg.h\",\
-            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\vcruntime_new_debug.h\",\
-            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\vcruntime_new.h\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\crtdefs.h\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\use_ansi.h\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\cstddef\",\
@@ -243,7 +233,7 @@
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\initializer_list\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\compare\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\concepts\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\tweakme.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\tweakme.h\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\chrono\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\__msvc_chrono.hpp\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\limits\",\
@@ -348,20 +338,20 @@
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\xhash\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\list\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\xnode_handle.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\fmt\\\\fmt.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\fmt\\\\bundled\\\\base.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\fmt\\\\bundled\\\\format.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\fmt\\\\bundled\\\\base.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\fmt\\\\fmt.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\fmt\\\\bundled\\\\base.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\fmt\\\\bundled\\\\format.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\fmt\\\\bundled\\\\base.h\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\string_view\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\fmt\\\\bundled\\\\format-inl.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\fmt\\\\bundled\\\\format-inl.h\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\algorithm\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\__msvc_heap_algorithms.hpp\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\__msvc_minmax.hpp\",\
             \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\ucrt\\\\io.h\",\
             \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\ucrt\\\\corecrt_io.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\fmt\\\\bundled\\\\format.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\common-inl.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\details\\\\console_globals.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\fmt\\\\bundled\\\\format.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\common-inl.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\details\\\\console_globals.h\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\mutex\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\thread\",\
             \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\ucrt\\\\process.h\",\
@@ -369,56 +359,73 @@
             \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\ucrt\\\\math.h\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\vcruntime_startup.h\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\stop_token\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\sinks\\\\sink.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\details\\\\log_msg.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\details\\\\log_msg-inl.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\details\\\\os.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\details\\\\os-inl.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\sinks\\\\sink.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\details\\\\log_msg.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\details\\\\log_msg-inl.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\details\\\\os.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\details\\\\os-inl.h\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\array\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\details\\\\windows_include.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\details\\\\windows_include.h\",\
             \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\ucrt\\\\direct.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\formatter.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\sinks\\\\sink-inl.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\sinks\\\\wincolor_sink-inl.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\pattern_formatter.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\pattern_formatter-inl.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\details\\\\fmt_helper.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\mdc.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\formatter.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\sinks\\\\sink-inl.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\sinks\\\\wincolor_sink-inl.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\pattern_formatter.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\pattern_formatter-inl.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\details\\\\fmt_helper.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\mdc.h\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\map\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\xtree\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\details\\\\synchronous_factory.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\details\\\\registry.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\details\\\\periodic_worker.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\details\\\\synchronous_factory.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\details\\\\registry.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\details\\\\periodic_worker.h\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\condition_variable\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\details\\\\periodic_worker-inl.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\details\\\\registry-inl.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\logger.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\details\\\\backtracer.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\details\\\\circular_q.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\details\\\\periodic_worker-inl.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\details\\\\registry-inl.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\logger.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\details\\\\backtracer.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\details\\\\circular_q.h\",\
             \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\professional\\\\vc\\\\tools\\\\msvc\\\\14.44.35207\\\\include\\\\cassert\",\
             \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\ucrt\\\\assert.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\details\\\\log_msg_buffer.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\details\\\\log_msg_buffer-inl.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\details\\\\backtracer-inl.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\logger-inl.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\sinks\\\\stdout_color_sinks-inl.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\spdlog.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\version.h\",\
-            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\f0315a3a96984a418ff57bb210e533f9\\\\include\\\\spdlog\\\\spdlog-inl.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\details\\\\log_msg_buffer.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\details\\\\log_msg_buffer-inl.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\details\\\\backtracer-inl.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\logger-inl.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\sinks\\\\stdout_color_sinks-inl.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\spdlog.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\version.h\",\
+            \"c:\\\\users\\\\kaiwang\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\s\\\\spdlog\\\\v1.15.3\\\\324a1c5aefde4fa5b62c4a616673d171\\\\include\\\\spdlog\\\\spdlog-inl.h\",\
             \"c:\\\\users\\\\kaiwang\\\\desktop\\\\kaibi\\\\src\\\\dxdebuglayer.h\",\
-            \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\winrt\\\\wrl\\\\client.h\",\
-            \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\winrt\\\\weakreference.h\",\
-            \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\winrt\\\\inspectable.h\",\
-            \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\winrt\\\\hstring.h\",\
-            \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\winrt\\\\roapi.h\",\
-            \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\winrt\\\\activation.h\",\
-            \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\winrt\\\\wrl\\\\def.h\",\
-            \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\winrt\\\\wrl\\\\internal.h\",\
-            \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\shared\\\\pshpack8.h\",\
-            \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\shared\\\\poppack.h\"\
+            \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\shared\\\\dxgi1_3.h\",\
+            \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\shared\\\\dxgi1_2.h\",\
+            \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\shared\\\\dxgi.h\",\
+            \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\shared\\\\dxgitype.h\",\
+            \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.26100.0\\\\um\\\\dxgidebug.h\"\
         ],\
         \"ImportedModules\": [],\
         \"ImportedHeaderUnits\": []\
     }\
-}"
+}",
+    values = {
+        [[C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Tools\MSVC\14.44.35207\bin\HostX64\x64\cl.exe]],
+        {
+            "-nologo",
+            "-MDd",
+            "-Zi",
+            "-FS",
+            [[-Fdbuild\windows\x64\debug\compile.kaibi.pdb]],
+            "-W3",
+            "-WX",
+            "-Od",
+            "-std:c++20",
+            "-DUNICODE",
+            "-D_UNICODE",
+            "-DNOMINMAX",
+            "-DWIN32_LEAN_AND_MEAN",
+            "/EHsc",
+            "-external:W0",
+            [[-external:IC:\Users\KaiWang\AppData\Local\.xmake\packages\s\spdlog\v1.15.3\324a1c5aefde4fa5b62c4a616673d171\include]],
+            "/utf-8"
+        }
+    }
 }
