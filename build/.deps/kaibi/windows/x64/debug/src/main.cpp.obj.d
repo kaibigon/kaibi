@@ -1,8 +1,30 @@
 {
+    depfiles_format = "cl_json",
     files = {
         [[src\main.cpp]]
     },
-    depfiles_format = "cl_json",
+    values = {
+        [[C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Tools\MSVC\14.44.35207\bin\HostX64\x64\cl.exe]],
+        {
+            "-nologo",
+            "-MDd",
+            "-Zi",
+            "-FS",
+            [[-Fdbuild\windows\x64\debug\compile.kaibi.pdb]],
+            "-W3",
+            "-WX",
+            "-Od",
+            "-std:c++20",
+            "-DUNICODE",
+            "-D_UNICODE",
+            "-DNOMINMAX",
+            "-DWIN32_LEAN_AND_MEAN",
+            "/EHsc",
+            "-external:W0",
+            [[-external:IC:\Users\KaiWang\AppData\Local\.xmake\packages\s\spdlog\v1.15.3\324a1c5aefde4fa5b62c4a616673d171\include]],
+            "/utf-8"
+        }
+    },
     depfiles = "{\
     \"Version\": \"1.2\",\
     \"Data\": {\
@@ -405,27 +427,5 @@
         \"ImportedModules\": [],\
         \"ImportedHeaderUnits\": []\
     }\
-}",
-    values = {
-        [[C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Tools\MSVC\14.44.35207\bin\HostX64\x64\cl.exe]],
-        {
-            "-nologo",
-            "-MDd",
-            "-Zi",
-            "-FS",
-            [[-Fdbuild\windows\x64\debug\compile.kaibi.pdb]],
-            "-W3",
-            "-WX",
-            "-Od",
-            "-std:c++20",
-            "-DUNICODE",
-            "-D_UNICODE",
-            "-DNOMINMAX",
-            "-DWIN32_LEAN_AND_MEAN",
-            "/EHsc",
-            "-external:W0",
-            [[-external:IC:\Users\KaiWang\AppData\Local\.xmake\packages\s\spdlog\v1.15.3\324a1c5aefde4fa5b62c4a616673d171\include]],
-            "/utf-8"
-        }
-    }
+}"
 }
