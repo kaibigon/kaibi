@@ -1,77 +1,58 @@
-#include <windows.h>
+#include <d3d12.h>
+#include <Windows.h>
+#include <winerror.h>
+#include <winuser.h>
+#include <wrl/client.h>
 
-LPCTSTR gWindowClassName = L"Rendering";
+#include <combaseapi.h>
+#include <spdlog/sinks/stdout_color_sinks.h>
+#include <spdlog/spdlog.h>
 
-LRESULT CALLBACK WindowProc(HWND inHWND, UINT inMSG, WPARAM inWParam, LPARAM inLParam) {
-	switch (inMSG) {
-	case WM_CLOSE:
-		PostQuitMessage(0);//enqueue WM_QUIT
-		break;
-	}
-	return DefWindowProc(inHWND, inMSG, inWParam, inLParam);
+#include <cstdio>
+
+#include "DXDebugLayer.h"
+
+using Microsoft::WRL::ComPtr;
+
+static void AttachDevConsole()
+{
+    if (!AllocConsole())
+    {
+        return;
+    }
+    FILE* dummy = nullptr;
+    freopen_s(&dummy, "CONOUT$", "w", stdout);
+    freopen_s(&dummy, "CONOUT$", "w", stderr);
+    freopen_s(&dummy, "CONIN$", "r", stdin);
+    SetConsoleTitleW(L"kaibi - log");
 }
 
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int inShowCmd) {
-	//register
-	WNDCLASSEX wndClassEx;
-	wndClassEx.cbSize = sizeof(WNDCLASSEX);
-	wndClassEx.style = CS_HREDRAW | CS_VREDRAW;
-	wndClassEx.cbClsExtra = NULL;//class
-	wndClassEx.cbWndExtra = NULL;//instance
-	wndClassEx.hInstance = hInstance;
-	wndClassEx.hIcon = LoadIcon(NULL, IDI_APPLICATION);
-	wndClassEx.hIconSm = LoadIcon(NULL, IDI_APPLICATION);
-	wndClassEx.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wndClassEx.hbrBackground = NULL;
-	wndClassEx.lpszMenuName = NULL;
-	wndClassEx.lpszClassName = gWindowClassName;
-	wndClassEx.lpfnWndProc = WindowProc;
+static void InitLogger()
+{
+    auto logger = spdlog::stdout_color_mt("kaibi");
+    logger->set_level(spdlog::level::trace);
+    logger->set_pattern("[%H:%M:%S.%e] [%^%l%$] %v");
+    spdlog::set_default_logger(logger);
+}
 
-	if (!RegisterClassEx(&wndClassEx)) {
-		MessageBox(NULL, L"Register Class Failed!", L"Error", MB_OK | MB_ICONERROR);
-		return -1;
-	}
+int WINAPI wWinMain(HINSTANCE instance, HINSTANCE, PWSTR, int showCmd)
+{
+    AttachDevConsole();
+    InitLogger();
 
-	int viewportWidth = 1080;
-	int viewportHeight = 720;
-	RECT rect;
-	rect.left = 0;
-	rect.top = 0;
-	rect.right = viewportWidth;
-	rect.bottom = viewportHeight;
-	AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, FALSE);
-	int windowWidth = rect.right - rect.left;
-	int windowHeight = rect.bottom - rect.top;
-	HWND hwnd = CreateWindowEx(NULL,
-		gWindowClassName,
-		L"My Render Window",
-		WS_OVERLAPPEDWINDOW,
-		CW_USEDEFAULT, CW_USEDEFAULT,
-		windowWidth, windowHeight,
-		NULL,
-		NULL,
-		hInstance,
-		NULL);
-	if (!hwnd) {
-		MessageBox(NULL, L"Create Window Failed!", L"Error", MB_OK | MB_ICONERROR);
-		return -1;
-	}
+    spdlog::info("kaibi starting");
+    DXDebugLayer::Get().Init();
 
-	ShowWindow(hwnd, inShowCmd);
-	UpdateWindow(hwnd);
-	
-	MSG msg;
-	while (true){
-		ZeroMemory(&msg, sizeof(MSG));
-		if (PeekMessage(&msg,NULL,0,0,PM_REMOVE)) {
-			if (msg.message == WM_QUIT) {
-				break;
-			}
-			TranslateMessage(&msg);
-			DispatchMessage(&msg);
-		} else {
-			//rendering
-		}
-	}
-	return 0;
+    ComPtr<ID3D12Device10> device;
+    D3D12CreateDevice(nullptr, D3D_FEATURE_LEVEL_11_0, IID_PPV_ARGS(&device));
+
+    DXDebugLayer::Get().Shutdown();
+    POINT p;
+    bool running = true;
+    while (running)
+    {
+        GetCursorPos(&p);
+        // spdlog::info("x: {}, y: {}", p.x, p.y);
+    }
+    return 0;
 }

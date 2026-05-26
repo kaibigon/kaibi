@@ -1,0 +1,70 @@
+---
+Language: Cpp
+BasedOnStyle: LLVM
+
+# Layout
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ColumnLimit: 120
+AccessModifierOffset: -4
+BreakBeforeBraces: Allman
+IndentCaseLabels: false
+NamespaceIndentation: None
+IndentPPDirectives: BeforeHash
+AlignConsecutiveAssignments: AcrossEmptyLinesAndComments
+
+# Pointers / references (int* p, Foo& bar)
+PointerAlignment: Left
+ReferenceAlignment: Left
+DerivePointerAlignment: false
+
+# Constructors / aggregates
+BreakConstructorInitializers: BeforeColon
+PackConstructorInitializers: NextLine
+Cpp11BracedListStyle: true
+# Keep small hot-path helpers compact
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: WithoutElse
+AllowShortLoopsOnASingleLine: true
+AllowShortBlocksOnASingleLine: Empty
+
+# Multi-line calls: one argument per line (CreateWindowEx, D3D12 APIs, etc.)
+AlignOperands: true
+AlignTrailingComments: true
+BinPackArguments: false
+BinPackParameters: false
+AllowAllArgumentsOnNextLine: false
+AllowAllParametersOfDeclarationOnNextLine: false
+AlignAfterOpenBracket: BlockIndent
+
+# Includes: platform → system → project
+SortIncludes: CaseInsensitive
+IncludeBlocks: Regroup
+IncludeCategories:
+  # Precompiled headers — always first
+  - Regex: '^"(pch\.h|stdafx\.h)"'
+    Priority: -1
+  # Windows / DirectX / WRL platform headers
+  - Regex: '^<(Windows\.h|win.*\.h|d3d.*|dxgi.*|d3dcompiler\.h|wrl/.*)>'
+    Priority: 1
+  # Other C-style system headers
+  - Regex: '^<.*\.h>'
+    Priority: 2
+  # C++ standard library
+  - Regex: '^<.*>'
+    Priority: 3
+  # Project headers
+  - Regex: '^".*"'
+    Priority: 4
+
+# Spacing
+SpaceBeforeParens: ControlStatements
+SpacesInAngles: Never
+SpacesInContainerLiterals: false
+SpaceInEmptyBlock: false
+ReflowComments: true
+
+# Disable noisy rewrites you usually want to control by hand
+SortUsingDeclarations: false
+FixNamespaceComments: true
