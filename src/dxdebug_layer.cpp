@@ -1,4 +1,4 @@
-#include "DXDebugLayer.h"
+#include "dxdebug_layer.h"
 
 #include <spdlog/spdlog.h>
 

@@ -1,8 +1,18 @@
 [
 {
   "directory": "C:\\Users\\KaiWang\\Desktop\\kaibi",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/MDd", "/Zi", "/FS", "/Fdbuild\\windows\\x64\\debug\\compile.kaibi.pdb", "/W3", "/WX", "/Od", "/std:c++20", "/DUNICODE", "/D_UNICODE", "/DNOMINMAX", "/DWIN32_LEAN_AND_MEAN", "/EHsc", "/IC:\\Users\\KaiWang\\AppData\\Local\\.xmake\\packages\\s\\spdlog\\v1.15.3\\324a1c5aefde4fa5b62c4a616673d171\\include", "/utf-8", "/Fobuild\\.objs\\kaibi\\windows\\x64\\debug\\src\\DXDebugLayer.cpp.obj", "src\\DXDebugLayer.cpp"],
-  "file": "src\\DXDebugLayer.cpp"
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/MDd", "/Zi", "/FS", "/Fdbuild\\windows\\x64\\debug\\compile.kaibi.pdb", "/W3", "/WX", "/Od", "/std:c++20", "/DUNICODE", "/D_UNICODE", "/DNOMINMAX", "/DWIN32_LEAN_AND_MEAN", "/EHsc", "/IC:\\Users\\KaiWang\\AppData\\Local\\.xmake\\packages\\s\\spdlog\\v1.15.3\\324a1c5aefde4fa5b62c4a616673d171\\include", "/utf-8", "/Fobuild\\.objs\\kaibi\\windows\\x64\\debug\\src\\dxcontext.cpp.obj", "src\\dxcontext.cpp"],
+  "file": "src\\dxcontext.cpp"
+},
+{
+  "directory": "C:\\Users\\KaiWang\\Desktop\\kaibi",
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/MDd", "/Zi", "/FS", "/Fdbuild\\windows\\x64\\debug\\compile.kaibi.pdb", "/W3", "/WX", "/Od", "/std:c++20", "/DUNICODE", "/D_UNICODE", "/DNOMINMAX", "/DWIN32_LEAN_AND_MEAN", "/EHsc", "/IC:\\Users\\KaiWang\\AppData\\Local\\.xmake\\packages\\s\\spdlog\\v1.15.3\\324a1c5aefde4fa5b62c4a616673d171\\include", "/utf-8", "/Fobuild\\.objs\\kaibi\\windows\\x64\\debug\\src\\dxdebug_layer.cpp.obj", "src\\dxdebug_layer.cpp"],
+  "file": "src\\dxdebug_layer.cpp"
+},
+{
+  "directory": "C:\\Users\\KaiWang\\Desktop\\kaibi",
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/MDd", "/Zi", "/FS", "/Fdbuild\\windows\\x64\\debug\\compile.kaibi.pdb", "/W3", "/WX", "/Od", "/std:c++20", "/DUNICODE", "/D_UNICODE", "/DNOMINMAX", "/DWIN32_LEAN_AND_MEAN", "/EHsc", "/IC:\\Users\\KaiWang\\AppData\\Local\\.xmake\\packages\\s\\spdlog\\v1.15.3\\324a1c5aefde4fa5b62c4a616673d171\\include", "/utf-8", "/Fobuild\\.objs\\kaibi\\windows\\x64\\debug\\src\\dxwindow.cpp.obj", "src\\dxwindow.cpp"],
+  "file": "src\\dxwindow.cpp"
 },
 {
   "directory": "C:\\Users\\KaiWang\\Desktop\\kaibi",

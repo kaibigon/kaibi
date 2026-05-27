@@ -10,7 +10,9 @@
 
 #include <cstdio>
 
-#include "DXDebugLayer.h"
+#include "dxcontext.h"
+#include "dxdebug_layer.h"
+#include "dxwindow.h"
 
 using Microsoft::WRL::ComPtr;
 
@@ -40,19 +42,21 @@ int WINAPI wWinMain(HINSTANCE instance, HINSTANCE, PWSTR, int showCmd)
     AttachDevConsole();
     InitLogger();
 
-    spdlog::info("kaibi starting");
     DXDebugLayer::Get().Init();
-
-    ComPtr<ID3D12Device10> device;
-    D3D12CreateDevice(nullptr, D3D_FEATURE_LEVEL_11_0, IID_PPV_ARGS(&device));
-
-    DXDebugLayer::Get().Shutdown();
-    POINT p;
-    bool running = true;
-    while (running)
+    if (DXContext::Get().Init() && DXWindow::Get().Init())
     {
-        GetCursorPos(&p);
-        // spdlog::info("x: {}, y: {}", p.x, p.y);
+        while (!DXWindow::Get().ShouldClose())
+        {
+            DXWindow::Get().Update();
+            // auto* cmdList = DXContext::Get().InitCommandList();
+
+            // DXContext::Get().ExecuteCommandList();
+
+            // Show me the stuff
+        }
+
+        DXWindow::Get().Shutdown();
+        DXContext::Get().Shutdown();
     }
     return 0;
 }
