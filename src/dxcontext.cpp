@@ -15,6 +15,11 @@
 
 bool DXContext::Init()
 {
+    if (FAILED(CreateDXGIFactory2(0, IID_PPV_ARGS(&m_dxgiFactory))))
+    {
+        return false;
+    }
+
     if (FAILED(D3D12CreateDevice(nullptr, D3D_FEATURE_LEVEL_11_0, IID_PPV_ARGS(&m_device))))
     {
         return false;
@@ -64,14 +69,32 @@ bool DXContext::Init()
 
 void DXContext::Shutdown()
 {
-    m_cmdAllocator->Release();
-    m_cmdlist->Release();
+    if (m_cmdAllocator != nullptr)
+    {
+        // m_cmdAllocator->Release();
+        m_cmdAllocator = nullptr;
+    }
+    if (m_cmdlist != nullptr)
+    {
+        // m_cmdlist->Release();
+        m_cmdlist = nullptr;
+    }
     if (m_fenceEvent)
     {
         CloseHandle(m_fenceEvent);
     }
-    m_cmdQueue->Release();
-    m_device->Release();
+
+    if (m_cmdQueue != nullptr)
+    {
+        // m_cmdQueue->Release();
+        m_cmdQueue = nullptr;
+    }
+
+    if (m_device != nullptr)
+    {
+        // m_device->Release();
+        m_device = nullptr;
+    }
 }
 
 void DXContext::SignalAndWait()

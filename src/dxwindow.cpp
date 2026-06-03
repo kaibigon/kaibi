@@ -1,5 +1,10 @@
 #include "dxwindow.h"
 
+#include <winerror.h>
+#include <wrl/client.h>
+
+#include <combaseapi.h>
+
 bool DXWindow::Init()
 {
     // Window class
@@ -45,11 +50,36 @@ bool DXWindow::Init()
         wcex.hInstance,
         nullptr
     );
-    if (m_window != nullptr) return false;
-    // TODO: continue here - kai
-    return true;
+    if (m_window == nullptr) return false;
 
-    // Swap Chain
+    // Swap Chain Descriptor
+    DXGI_SWAP_CHAIN_DESC1 swd{};
+    swd.Width              = 1920;
+    swd.Height             = 1080;
+    swd.Format             = DXGI_FORMAT_R8G8B8A8_UNORM;
+    swd.Stereo             = false;
+    swd.SampleDesc.Count   = 1;
+    swd.SampleDesc.Quality = 0;
+    swd.BufferUsage        = DXGI_USAGE_BACK_BUFFER | DXGI_USAGE_RENDER_TARGET_OUTPUT;
+    swd.BufferCount        = static_cast<UINT>(GetFrameCount());
+    swd.Scaling            = DXGI_SCALING_STRETCH;
+    swd.SwapEffect         = DXGI_SWAP_EFFECT_FLIP_DISCARD;
+    swd.AlphaMode          = DXGI_ALPHA_MODE_IGNORE;
+    swd.Flags              = DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH | DXGI_SWAP_CHAIN_FLAG_ALLOW_TEARING;
+
+    DXGI_SWAP_CHAIN_FULLSCREEN_DESC sfd{};
+    sfd.Windowed  = true;
+
+    // Create Swap chain
+    auto& factory = DXContext::Get().GetFactory();
+    Microsoft::WRL::ComPtr<IDXGISwapChain1> sc1;
+    factory->CreateSwapChainForHwnd(DXContext::Get().GetCommandQueue().Get(), m_window, &swd, &sfd, nullptr, &sc1);
+    if (FAILED(sc1.Get()->QueryInterface(IID_PPV_ARGS(&m_swapChain))))
+    {
+        return false;
+    }
+
+    return true;
 }
 
 void DXWindow::Update()
@@ -62,8 +92,19 @@ void DXWindow::Update()
     }
 }
 
+void DXWindow::Present()
+{
+    m_swapChain->Present(1, 0);
+}
+
 void DXWindow::Shutdown()
 {
+    if (m_swapChain != nullptr)
+    {
+        // m_swapChain->Release();
+        m_swapChain = nullptr;
+    }
+
     if (m_window)
     {
         DestroyWindow(m_window);

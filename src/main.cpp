@@ -49,11 +49,13 @@ int WINAPI wWinMain(HINSTANCE instance, HINSTANCE, PWSTR, int showCmd)
         {
             DXWindow::Get().Update();
             // auto* cmdList = DXContext::Get().InitCommandList();
-
             // DXContext::Get().ExecuteCommandList();
 
             // Show me the stuff
+            DXWindow::Get().Present();
         }
+        // Flushing
+        DXContext::Get().Flush(DXWindow::GetFrameCount());
 
         DXWindow::Get().Shutdown();
         DXContext::Get().Shutdown();

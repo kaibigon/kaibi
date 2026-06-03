@@ -2,6 +2,8 @@
 
 #include <spdlog/spdlog.h>
 
+#include <cstddef>
+
 bool DXDebugLayer::Init()
 {
 #ifdef _DEBUG
@@ -32,7 +34,16 @@ void DXDebugLayer::Shutdown()
             DXGI_DEBUG_RLO_FLAGS(DXGI_DEBUG_RLO_DETAIL | DXGI_DEBUG_RLO_IGNORE_INTERNAL)
         );
     }
-    m_dxgiDebug->Release();
-    m_d3d12Debug->Release();
+    if (m_dxgiDebug != nullptr)
+    {
+        // m_dxgiDebug->Release();
+        m_dxgiDebug = nullptr;
+    }
+
+    if (m_d3d12Debug != nullptr)
+    {
+        // m_d3d12Debug->Release();
+        m_d3d12Debug = nullptr;
+    }
 #endif
 }

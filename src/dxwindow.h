@@ -13,9 +13,12 @@ class DXWindow
 public:
     bool Init();
     void Update();
+    void Present();
     void Shutdown();
 
     inline bool ShouldClose() const { return m_shouldClose; }
+
+    static constexpr size_t GetFrameCount() { return 2; }
 
 private:
     static LRESULT CALLBACK OnWindowMessage(HWND wnd, UINT msg, WPARAM wParam, LPARAM lParam);
