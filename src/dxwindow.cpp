@@ -101,7 +101,6 @@ void DXWindow::Shutdown()
 {
     if (m_swapChain != nullptr)
     {
-        // m_swapChain->Release();
         m_swapChain = nullptr;
     }
 

@@ -71,12 +71,10 @@ void DXContext::Shutdown()
 {
     if (m_cmdAllocator != nullptr)
     {
-        // m_cmdAllocator->Release();
         m_cmdAllocator = nullptr;
     }
     if (m_cmdlist != nullptr)
     {
-        // m_cmdlist->Release();
         m_cmdlist = nullptr;
     }
     if (m_fenceEvent)
@@ -86,13 +84,11 @@ void DXContext::Shutdown()
 
     if (m_cmdQueue != nullptr)
     {
-        // m_cmdQueue->Release();
         m_cmdQueue = nullptr;
     }
 
     if (m_device != nullptr)
     {
-        // m_device->Release();
         m_device = nullptr;
     }
 }

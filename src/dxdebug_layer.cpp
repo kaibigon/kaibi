@@ -11,6 +11,7 @@ bool DXDebugLayer::Init()
     if (SUCCEEDED(D3D12GetDebugInterface(IID_PPV_ARGS(&m_d3d12Debug))))
     {
         m_d3d12Debug->EnableDebugLayer();
+        SPDLOG_INFO("enable debug layer");
 
         // Init DXGI Debug (detect leak)
         if (SUCCEEDED(DXGIGetDebugInterface1(0, IID_PPV_ARGS(&m_dxgiDebug))))
@@ -36,13 +37,11 @@ void DXDebugLayer::Shutdown()
     }
     if (m_dxgiDebug != nullptr)
     {
-        // m_dxgiDebug->Release();
         m_dxgiDebug = nullptr;
     }
 
     if (m_d3d12Debug != nullptr)
     {
-        // m_d3d12Debug->Release();
         m_d3d12Debug = nullptr;
     }
 #endif
