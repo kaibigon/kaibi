@@ -5,16 +5,21 @@
 #include <wrl/client.h>
 
 #include <combaseapi.h>
+#include <spdlog/sinks/null_sink.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/spdlog.h>
 
 #include <cstdio>
+#include <memory>
 
 #include "dxcontext.h"
 #include "dxdebug_layer.h"
 #include "dxwindow.h"
 
 using Microsoft::WRL::ComPtr;
+
+// Set to 0 to re-enable the spdlog console window.
+#define KAIBI_DISABLE_CONSOLE 1
 
 static void AttachDevConsole()
 {
@@ -31,15 +36,22 @@ static void AttachDevConsole()
 
 static void InitLogger()
 {
+#if KAIBI_DISABLE_CONSOLE
+    auto nullSink = std::make_shared<spdlog::sinks::null_sink_mt>();
+    spdlog::set_default_logger(std::make_shared<spdlog::logger>("kaibi", nullSink));
+#else
     auto logger = spdlog::stdout_color_mt("kaibi");
     logger->set_level(spdlog::level::trace);
     logger->set_pattern("[%H:%M:%S.%e] [%^%l%$] %v");
     spdlog::set_default_logger(logger);
+#endif
 }
 
 int WINAPI wWinMain(HINSTANCE instance, HINSTANCE, PWSTR, int showCmd)
 {
+#if !KAIBI_DISABLE_CONSOLE
     AttachDevConsole();
+#endif
     InitLogger();
 
     DXDebugLayer::Get().Init();
@@ -47,7 +59,18 @@ int WINAPI wWinMain(HINSTANCE instance, HINSTANCE, PWSTR, int showCmd)
     {
         while (!DXWindow::Get().ShouldClose())
         {
+            // Process pending window message
             DXWindow::Get().Update();
+
+            // Handling resizing
+            if (DXWindow::Get().ShouldResize())
+            {
+                DXContext::Get().Flush(DXWindow::GetFrameCount());
+                DXWindow::Get().Resize();
+            }
+
+            // TODO: draw
+
             // auto* cmdList = DXContext::Get().InitCommandList();
             // DXContext::Get().ExecuteCommandList();
 

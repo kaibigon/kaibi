@@ -1,6 +1,7 @@
 #pragma once
 
 #include <d3d12.h>
+#include <dxgi1_6.h>
 #include <winnt.h>
 #include <wrl/client.h>
 
@@ -8,7 +9,6 @@
 
 #ifdef _DEBUG
     #include <d3d12sdklayers.h>
-    #include <dxgi1_6.h>
     #include <dxgidebug.h>
 #endif
 

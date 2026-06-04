@@ -18,7 +18,7 @@ add_files("src/*.cpp")
 add_packages("spdlog")
 
 if is_plat("windows") then
-    add_defines("UNICODE", "_UNICODE", "NOMINMAX", "WIN32_LEAN_AND_MEAN", "_DEBUG")
+    add_defines("UNICODE", "_UNICODE", "NOMINMAX", "WIN32_LEAN_AND_MEAN")
     add_ldflags("/SUBSYSTEM:WINDOWS", { force = true })
     add_syslinks(
         "d3d12",

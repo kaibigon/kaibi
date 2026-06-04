@@ -1,9 +1,14 @@
 #include "dxwindow.h"
 
+#include <dxgi.h>
+#include <dxgiformat.h>
+#include <windef.h>
 #include <winerror.h>
+#include <winuser.h>
 #include <wrl/client.h>
 
 #include <combaseapi.h>
+#include <minwindef.h>
 
 bool DXWindow::Init()
 {
@@ -97,6 +102,24 @@ void DXWindow::Present()
     m_swapChain->Present(1, 0);
 }
 
+void DXWindow::Resize()
+{
+    RECT rc;
+    if (GetClientRect(m_window, &rc))
+    {
+        m_width  = rc.right - rc.left;
+        m_height = rc.bottom - rc.top;
+        m_swapChain->ResizeBuffers(
+            static_cast<UINT>(GetFrameCount()),
+            m_width,
+            m_height,
+            DXGI_FORMAT_UNKNOWN,
+            DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH | DXGI_SWAP_CHAIN_FLAG_ALLOW_TEARING
+        );
+        m_shouldResize = false;
+    }
+}
+
 void DXWindow::Shutdown()
 {
     if (m_swapChain != nullptr)
@@ -119,6 +142,13 @@ LRESULT CALLBACK DXWindow::OnWindowMessage(HWND wnd, UINT msg, WPARAM wParam, LP
 {
     switch (msg)
     {
+    case WM_SIZE:
+        if (lParam && (HIWORD(lParam) != Get().m_height || LOWORD(lParam) != Get().m_width))
+        {
+            Get().m_shouldResize = true;
+        }
+
+        break;
     case WM_CLOSE:
         Get().m_shouldClose = true;
         return 0;
