@@ -57,7 +57,7 @@ int WINAPI wWinMain(HINSTANCE instance, HINSTANCE, PWSTR, int showCmd)
     DXDebugLayer::Get().Init();
     if (DXContext::Get().Init() && DXWindow::Get().Init())
     {
-        DXWindow::Get().SetFullScreen(true);
+        DXWindow::Get().SetFullScreen(false);
         while (!DXWindow::Get().ShouldClose())
         {
             // Process pending window message
@@ -71,9 +71,13 @@ int WINAPI wWinMain(HINSTANCE instance, HINSTANCE, PWSTR, int showCmd)
             }
 
             // TODO: draw
-
-            // auto* cmdList = DXContext::Get().InitCommandList();
-            // DXContext::Get().ExecuteCommandList();
+            auto* cmdList = DXContext::Get().InitCommandList();
+            if (cmdList)
+            {
+                DXWindow::Get().BeginFrame(cmdList);
+                DXWindow::Get().EndFrame(cmdList);
+                DXContext::Get().ExecuteCommandList();
+            }
 
             // Show me the stuff
             DXWindow::Get().Present();

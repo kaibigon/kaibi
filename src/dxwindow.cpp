@@ -1,5 +1,6 @@
 #include "dxwindow.h"
 
+#include <d3d12.h>
 #include <dxgi.h>
 #include <dxgiformat.h>
 #include <windef.h>
@@ -10,6 +11,10 @@
 #include <combaseapi.h>
 #include <minwindef.h>
 #include <rpcndr.h>
+
+#include <cstddef>
+
+#include "DXContext.h"
 
 bool DXWindow::Init()
 {
@@ -45,7 +50,7 @@ bool DXWindow::Init()
     m_window = CreateWindowExW(
         WS_EX_OVERLAPPEDWINDOW | WS_EX_APPWINDOW,
         (LPCWSTR)m_wndClass,
-        L"D3D12Ez",
+        L"GraphicsPlayground",
         WS_OVERLAPPEDWINDOW | WS_VISIBLE,
         monitorInfo.rcWork.left + 100,
         monitorInfo.rcWork.top + 100,
@@ -85,6 +90,35 @@ bool DXWindow::Init()
         return false;
     }
 
+    // Create RTV Heap
+    D3D12_DESCRIPTOR_HEAP_DESC descHeapDesc{};
+    descHeapDesc.Type           = D3D12_DESCRIPTOR_HEAP_TYPE_RTV;
+    descHeapDesc.NumDescriptors = FrameCount;
+    descHeapDesc.Flags          = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;
+    descHeapDesc.NodeMask       = 0;
+    if (FAILED(DXContext::Get().GetDevice()->CreateDescriptorHeap(&descHeapDesc, IID_PPV_ARGS(&m_rtvDescHeap))))
+    {
+        return false;
+    }
+
+    // Create handles to rtv
+    auto firstHandle = m_rtvDescHeap->GetCPUDescriptorHandleForHeapStart();
+    auto handleIncrement =
+        DXContext::Get().GetDevice()->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_RTV);
+
+    for (size_t i = 0; i < FrameCount; i++)
+    {
+        m_rtvHandles[i] = firstHandle;
+        // m_rtvHandles[i].ptr += static_cast<SIZE_T>(handleIncrement) * i;
+        m_rtvHandles[i].ptr += handleIncrement * i;
+    }
+
+    // Get Buffers
+    if (!GetBuffers())
+    {
+        return false;
+    }
+
     return true;
 }
 
@@ -98,6 +132,38 @@ void DXWindow::Update()
     }
 }
 
+void DXWindow::BeginFrame(ID3D12GraphicsCommandList7* cmdList)
+{
+    m_currentBufferIndex = m_swapChain->GetCurrentBackBufferIndex();
+
+    D3D12_RESOURCE_BARRIER barr;
+    barr.Type                   = D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;
+    barr.Flags                  = D3D12_RESOURCE_BARRIER_FLAG_NONE;
+    barr.Transition.pResource   = m_buffers[m_currentBufferIndex].Get();
+    barr.Transition.Subresource = 0;
+    barr.Transition.StateBefore = D3D12_RESOURCE_STATE_PRESENT;
+    barr.Transition.StateAfter  = D3D12_RESOURCE_STATE_RENDER_TARGET;
+
+    cmdList->ResourceBarrier(1, &barr);
+
+    float clearColor[] = {.0f, .4f, .4f, 1.f};
+    cmdList->ClearRenderTargetView(m_rtvHandles[m_currentBufferIndex], clearColor, 0, nullptr);
+
+    cmdList->OMSetRenderTargets(1, &m_rtvHandles[m_currentBufferIndex], false, nullptr);
+}
+void DXWindow::EndFrame(ID3D12GraphicsCommandList7* cmdList)
+{
+    D3D12_RESOURCE_BARRIER barr;
+    barr.Type                   = D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;
+    barr.Flags                  = D3D12_RESOURCE_BARRIER_FLAG_NONE;
+    barr.Transition.pResource   = m_buffers[m_currentBufferIndex].Get();
+    barr.Transition.Subresource = 0;
+    barr.Transition.StateBefore = D3D12_RESOURCE_STATE_RENDER_TARGET;
+    barr.Transition.StateAfter  = D3D12_RESOURCE_STATE_PRESENT;
+
+    cmdList->ResourceBarrier(1, &barr);
+}
+
 void DXWindow::Present()
 {
     m_swapChain->Present(1, 0);
@@ -105,6 +171,8 @@ void DXWindow::Present()
 
 void DXWindow::Resize()
 {
+    ReleaseBuffers();
+
     RECT rc;
     if (GetClientRect(m_window, &rc))
     {
@@ -119,10 +187,20 @@ void DXWindow::Resize()
         );
         m_shouldResize = false;
     }
+    GetBuffers();
 }
 
 void DXWindow::Shutdown()
 {
+    ReleaseBuffers();
+    // m_rtvDescHeap.Reset();
+    // m_swapChain.Reset();
+
+    if (m_rtvDescHeap != nullptr)
+    {
+        m_rtvDescHeap = nullptr;
+    }
+
     if (m_swapChain != nullptr)
     {
         m_swapChain = nullptr;
@@ -177,6 +255,34 @@ void DXWindow::SetFullScreen(bool enabled)
     }
 
     m_isFullScreen = enabled;
+}
+
+bool DXWindow::GetBuffers()
+{
+    for (size_t i = 0; i < FrameCount; i++)
+    {
+        if (FAILED(m_swapChain->GetBuffer(static_cast<UINT>(i), IID_PPV_ARGS(&m_buffers[i]))))
+        {
+            return false;
+        }
+
+        D3D12_RENDER_TARGET_VIEW_DESC rtv{};
+        rtv.Format               = DXGI_FORMAT_R8G8B8A8_UNORM;
+        rtv.ViewDimension        = D3D12_RTV_DIMENSION_TEXTURE2D;
+        rtv.Texture2D.MipSlice   = 0;
+        rtv.Texture2D.PlaneSlice = 0;
+        DXContext::Get().GetDevice()->CreateRenderTargetView(m_buffers[i].Get(), &rtv, m_rtvHandles[i]);
+    }
+
+    return true;
+}
+
+void DXWindow::ReleaseBuffers()
+{
+    for (size_t i = 0; i < FrameCount; i++)
+    {
+        m_buffers[i].Reset();
+    }
 }
 
 LRESULT CALLBACK DXWindow::OnWindowMessage(HWND wnd, UINT msg, WPARAM wParam, LPARAM lParam)

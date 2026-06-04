@@ -114,7 +114,7 @@ void DXContext::SignalAndWait()
 ID3D12GraphicsCommandList7* DXContext::InitCommandList()
 {
     spdlog::info("init cmdlist");
-    m_cmdAllocator.Reset();
+    m_cmdAllocator.Get()->Reset();
     m_cmdlist.Get()->Reset(m_cmdAllocator.Get(), nullptr);
     return m_cmdlist.Get();
 }
