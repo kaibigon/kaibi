@@ -57,6 +57,7 @@ int WINAPI wWinMain(HINSTANCE instance, HINSTANCE, PWSTR, int showCmd)
     DXDebugLayer::Get().Init();
     if (DXContext::Get().Init() && DXWindow::Get().Init())
     {
+        DXWindow::Get().SetFullScreen(true);
         while (!DXWindow::Get().ShouldClose())
         {
             // Process pending window message

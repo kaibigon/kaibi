@@ -16,9 +16,11 @@ public:
     void Present();
     void Resize();
     void Shutdown();
+    void SetFullScreen(bool enabled);
 
     inline bool ShouldClose() const { return m_shouldClose; }
     inline bool ShouldResize() const { return m_shouldResize; }
+    inline bool IsFullScreen() const { return m_isFullScreen; }
 
     static constexpr size_t GetFrameCount() { return 2; }
 
@@ -30,6 +32,7 @@ private:
     HWND m_window       = nullptr;
     bool m_shouldClose  = false;
     bool m_shouldResize = false;
+    bool m_isFullScreen = false;
     UINT m_width        = 1920;
     UINT m_height       = 1080;
 
